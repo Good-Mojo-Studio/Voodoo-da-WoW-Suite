@@ -1,0 +1,53 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
+	<Frame name="vdwsFourEdges1" parent="UIParent" frameStrata="BACKGROUND" frameLevel="0" hidden="true">
+		<Size x="185" y="152"/>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="-16" y="24"/>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND" textureSubLevel="0">
+				<Texture parentKey= "Background" rotation="0.0" atlas="parchmentpopup-filigree" useAtlasSize="false" setAllPoints="true"/>
+			</Layer>
+		</Layers>
+	</Frame>
+	<Frame name="vdwsFourEdges2" parent="UIParent" frameStrata="BACKGROUND" frameLevel="0" hidden="true">
+		<Size x="185" y="152"/>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" x="-16" y="-24"/>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND" textureSubLevel="0">
+				<Texture parentKey= "Background" rotation="0.0" atlas="parchmentpopup-filigree" useAtlasSize="false" setAllPoints="true">
+					<TexCoords left="0" right="1" top="1" bottom="0"/>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+	<Frame name="vdwsFourEdges3" parent="UIParent" frameStrata="BACKGROUND" frameLevel="0" hidden="true">
+		<Size x="185" y="152"/>
+		<Anchors>
+			<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" x="16" y="24"/>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND" textureSubLevel="0">
+				<Texture parentKey= "Background" rotation="0.0" atlas="parchmentpopup-filigree" useAtlasSize="false" setAllPoints="true">
+					<TexCoords left="1" right="0" top="0" bottom="1"/>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+	<Frame name="vdwsFourEdges4" parent="UIParent" frameStrata="BACKGROUND" frameLevel="0" hidden="true">
+		<Size x="185" y="152"/>
+		<Anchors>
+			<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" x="16" y="-24"/>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND" textureSubLevel="0">
+				<Texture parentKey= "Background" rotation="0.0" atlas="parchmentpopup-filigree" useAtlasSize="false" setAllPoints="true">
+					<TexCoords left="1" right="0" top="1" bottom="0"/>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+	<Script file="VDWS_FourEdges.lua"/>
+</Ui>

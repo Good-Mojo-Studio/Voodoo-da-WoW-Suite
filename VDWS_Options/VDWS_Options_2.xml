@@ -1,0 +1,144 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
+	<Frame name="vdwsOptions2" inherits="vdwOptionsPanel" parent="UIParent">
+		<Frames>
+<!-- Options Box 1 Visibility -->
+			<Frame name="$parentBox1" inherits="vdwOptionsBox">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x ="8" y="-64"/>
+				</Anchors>
+				<Frames>
+<!-- Check Button 1, Visibility -->
+					<CheckButton name="$parentCheckButton1" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="8" y="-24"/>
+						</Anchors>
+					</CheckButton>
+<!-- Check Button 2, Visibility Title -->
+					<CheckButton name="$parentCheckButton2" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton1" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+						</Anchors>
+					</CheckButton>
+<!-- Check Button 3, Loot -->
+					<CheckButton name="$parentCheckButton3" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton2" relativePoint="BOTTOMLEFT" x="0" y="-24"/>
+						</Anchors>
+					</CheckButton>
+<!-- Check Button 4, Coins -->
+					<CheckButton name="$parentCheckButton4" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton3" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+						</Anchors>
+					</CheckButton>
+<!-- Check Button 5, Currencies -->
+					<CheckButton name="$parentCheckButton5" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton4" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+						</Anchors>
+					</CheckButton>
+<!-- Check Button 6, XP -->
+					<CheckButton name="$parentCheckButton6" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton5" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+						</Anchors>
+					</CheckButton>
+<!-- Check Button 7, Honor -->
+					<CheckButton name="$parentCheckButton7" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton6" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+						</Anchors>
+					</CheckButton>
+<!-- Check Button 8, Reputation -->
+					<CheckButton name="$parentCheckButton8" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton7" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+						</Anchors>
+					</CheckButton>
+<!-- Check Button 9, Skill -->
+					<CheckButton name="$parentCheckButton9" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton8" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+						</Anchors>
+					</CheckButton>
+<!-- Check Button 10, Miscellaneous -->
+					<CheckButton name="$parentCheckButton10" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton9" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+						</Anchors>
+					</CheckButton>
+<!-- Check Button 10, Miscellaneous -->
+					<CheckButton name="$parentCheckButton11" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton10" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+						</Anchors>
+					</CheckButton>
+				</Frames>
+			</Frame>
+<!-- Options Box 2 Background -->
+			<Frame name="$parentBox2" inherits="vdwOptionsBox">
+				<Frames>
+<!-- Pop Out 1 Style -->
+					<Button name="$parentPopOut1" inherits="vdwPopOut">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="4" y="-32"/>
+						</Anchors>
+					</Button>
+<!-- Pop Out 2 Color -->
+					<Button name="$parentPopOut2" inherits="vdwPopOut">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="-4" y="0"/>
+						</Anchors>
+					</Button>
+<!--Slider 1, Opacity -->	
+					<Frame name="$parentSlider1" inherits="vdwSlider">
+						<Anchors>
+							<Anchor point="TOP" relativeKey="$parent.Title" relativePoint="BOTTOM" x="0" y="-48"/>
+						</Anchors>
+					</Frame>
+				</Frames>
+			</Frame>
+<!-- Options Box 3 Size -->
+			<Frame name="$parentBox3" inherits="vdwOptionsBox">
+				<Frames>
+<!--Slider 1, width -->	
+					<Frame name="$parentSlider1" inherits="vdwSlider">
+						<Anchors>
+							<Anchor point="TOP" relativeKey="$parent.Title" relativePoint="BOTTOM" x="0" y="-8"/>
+						</Anchors>
+					</Frame>
+<!--Slider 2, height -->	
+					<Frame name="$parentSlider2" inherits="vdwSlider">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="$parentSlider1" relativePoint="BOTTOM" x="0" y="-8"/>
+						</Anchors>
+					</Frame>
+				</Frames>
+			</Frame>
+<!-- Options Box 4 Fonts -->
+			<Frame name="$parentBox4" inherits="vdwOptionsBox">
+				<Frames>
+<!-- Pop Out 1 Style -->
+					<Button name="$parentPopOut1" inherits="vdwPopOut">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="4" y="-32"/>
+						</Anchors>
+					</Button>
+<!-- Pop Out 2 Color -->
+					<Button name="$parentPopOut2" inherits="vdwPopOut">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="-4" y="0"/>
+						</Anchors>
+					</Button>
+<!--Slider 1, Opacity -->	
+					<Frame name="$parentSlider1" inherits="vdwSlider">
+						<Anchors>
+							<Anchor point="TOP" relativeKey="$parent.Title" relativePoint="BOTTOM" x="0" y="-48"/>
+						</Anchors>
+					</Frame>
+				</Frames>
+			</Frame>
+		</Frames>
+	</Frame>
+	<Script file="VDWS_Options_2.lua"/>
+</Ui>

@@ -1,0 +1,28 @@
+## Interface: 120000
+## IconAtlas: Relic-Arcane-TraitBG
+## Title: Voodoo |cFF974CE7da|r Wow |cFF974CE7Suite|r Options
+## Notes: Options for the Voodoo da Wow Suite
+## Version: 1.00.00
+## Category: UI Overhaul
+## Category-deDE: UI-Überholung
+## Category-esES: Renovación de la Interfaz de Usuario
+## Category-esMX: Renovación de la Interfaz de Usuario
+## Category-frFR: Révision de l'Interface Utilisateur
+## Category-itIT: Revisione dell'interfaccia utente
+## Category-ptBR: Reformulação da Interface do Usuário
+## Category-ruRU: Переработка интерфейса
+## Category-zhCN: UI重构
+## Category-zhTW: UI重構
+## Group: VDWS
+## Dependencies: VDWS
+## LoadOnDemand: 1
+## DefaultState: enabled
+## Author: The_Indolent
+## X-Website: https://panosanastasiou.rocks/
+
+VDWS_Options_L.lua
+VDWS_Options_0.xml
+VDWS_Options_1.xml
+VDWS_Options_2.xml
+VDWS_Options_3.xml
+VDWS_Options_4.xml

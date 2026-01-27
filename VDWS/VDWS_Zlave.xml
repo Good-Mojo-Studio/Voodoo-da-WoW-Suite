@@ -1,0 +1,41 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
+	<Frame name="vdwsZlave" parent="UIParent" frameStrata="BACKGROUND" frameLevel="0" hidden="true">
+		<Scripts>
+			<OnLoad>
+				self:RegisterEvent("PLAYER_LOGIN")
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	<Frame name="vdwsFPS" parent="FramerateFrame" frameStrata="BACKGROUND" frameLevel="0" clampedToScreen="true" setAllPoints="true">
+		<Layers>
+			<Layer level="BACKGROUND" textureSubLevel="0">
+				<Texture parentKey= "Background" rotation="0.0" atlas="GarrMissionLocation-Maw-ButtonHighlight" useAtlasSize="false" setAllPoints="true"/>
+			</Layer>
+		</Layers>
+	</Frame>
+	<Frame name="vdwsMMC" parent="MicroMenuContainer" frameStrata="BACKGROUND" frameLevel="0" clampedToScreen="true" setAllPoints="true">
+		<Layers>
+			<Layer level="BACKGROUND" textureSubLevel="0">
+				<Texture parentKey= "Background" rotation="0.0" atlas="GarrMissionLocation-Maw-ButtonHighlight" useAtlasSize="false" setAllPoints="true"/>
+			</Layer>
+		</Layers>
+	</Frame>
+	<Frame name="vdwsChat" frameStrata="BACKGROUND" frameLevel="0" clampedToScreen="true" setAllPoints="true" virtual="true">
+		<Layers>
+			<Layer level="BACKGROUND" textureSubLevel="0">
+				<Texture parentKey= "Background" rotation="0.0" atlas="Artifacts-BG-Shadow" useAtlasSize="false" setAllPoints="true"/>
+			</Layer>
+		</Layers>
+	</Frame>
+	<Frame name="vdwsChat1" inherits="vdwsChat" parent="ChatFrame1"/>
+	<Frame name="vdwsChat2" inherits="vdwsChat" parent="ChatFrame2"/>
+	<Frame name="vdwsChat3" inherits="vdwsChat" parent="ChatFrame3"/>
+	<Frame name="vdwsChat4" inherits="vdwsChat" parent="ChatFrame4"/>
+	<Frame name="vdwsChat5" inherits="vdwsChat" parent="ChatFrame5"/>
+	<Frame name="vdwsChat6" inherits="vdwsChat" parent="ChatFrame6"/>
+	<Frame name="vdwsChat7" inherits="vdwsChat" parent="ChatFrame7"/>
+	<Frame name="vdwsChat8" inherits="vdwsChat" parent="ChatFrame8"/>
+	<Frame name="vdwsChat9" inherits="vdwsChat" parent="ChatFrame9"/>
+	<Frame name="vdwsChat10" inherits="vdwsChat" parent="ChatFrame10"/>
+	<Script file="VDWS_Zlave.lua"/>
+</Ui>
