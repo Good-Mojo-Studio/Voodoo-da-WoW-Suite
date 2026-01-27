@@ -24,9 +24,7 @@ Enchant your UI with mojo & rhythm.
 ---
 
 ## Suite collaboration (shared features)
-- Assign a specific **talent loadout** to use its own cast bar
-  - Powered by **Funky Mojo Changer (FMC)** + **Voodoo Casting Bar (VCB)**
-- More addon-to-addon collaboration is planned as the suite grows
+- Addon-to-addon collaboration is planned as the suite grows
 
 ---
 
