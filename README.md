@@ -8,27 +8,42 @@ Enchant your UI with mojo & rhythm.
 
 ---
 
+### Addon support, information, ideas
+
+Here is some more information for the addon: [https://github.com/Good-Mojo-Studio/Voodoo-da-WoW-Suite/wiki/Voodoo-da-WoW-Suite](https://github.com/Good-Mojo-Studio/Voodoo-da-WoW-Suite/wiki/Voodoo-da-WoW-Suite)
+
+---
+
+### Part of the Good Mojo Studio ecosystem
+
+This addon includes most Good Mojo Studio addons in one bundle.
+
+---
+
 ### How to open Options
-- Slash commands: `/vdws` or `/voodoodawowsuite`
+- Slash command: `/vdws` or `/voodoodawowsuite`
 - Minimap “addon” button (the small Blizzard button near the minimap)
 
 ---
 
 ### UI tweaks & quality-of-life
 - Choose fonts for the default error frame
-- Show FPS frame and customize background + fonts
-- Show XP / Reputation / Honor bar text all the time (easy toggle)
-- Switch the minimap clock to 24-hour time (easy toggle)
-- Show/hide the default chat frame background (more features planned)
-- Show/hide screen-edge artworks and choose style + color (more options planned)
-- Show/hide the Looty Groove frame (also known as the SSOA frame)
-  - Choose what to show: loot, coins, currencies, etc.
-  - Optional: show notifications from **Sweet Sound of Auction House (SSOA)**
+- Display an FPS frame with customizable background and fonts
+- Show XP, Reputation, and Honor bar text at all times (toggleable)
+- Switch the minimap clock to 24-hour time
+- New background for the default chat frame, you can hide/show it
+- Show or hide screen-edge artwork with selectable style and color
+- Show or hide the Looty Groove frame (SSOA notification frame)
+- Choose what the Looty Groove frame displays:
+   - Loot
+   - Coins
+   - Currencies
+   - Optional notifications from Sweet Sound of Auction House (SSOA)
 
 ---
 
 ### Suite collaboration (shared features)
-- Addon-to-addon collaboration is planned as the suite grows
+- Shared UI helpers, localization, and internal frameworks are provided by VDWS
 
 ---
 
@@ -37,6 +52,16 @@ Enchant your UI with mojo & rhythm.
 - Mirrors of Voodoo (MOV)
 - Sweet Sound of Auction House (SSOA)
 - Voodoo Casting Bar (VCB)
+
+---
+
+### Extras
+- Profiles: save/load your setup between characters
+
+---
+
+### Known Issues
+- None
 
 ---
 
