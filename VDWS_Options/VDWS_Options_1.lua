@@ -7,7 +7,7 @@ local prefixChat = VDW.PrefixChat("VDWS")
 local maxW = 160
 local finalW = 0
 local counter = 0
-local style = {"Filigree", "CoolCorner",}
+local style = {"Izes", "Kedima", "Kuriza", "Kladia",}
 local color = {G.OPTIONS_C_DEFAULT, G.OPTIONS_C_CLASS, G.OPTIONS_C_FACTION,}
 -- Taking care of the option panel --
 vdwsOptions1:SetSize(576, 484)
@@ -25,7 +25,7 @@ vdwsOptions1.TopTxt:SetTextColor(C.Main:GetRGB())
 vdwsOptions1.TopTxt:SetText("Four Edges Options")
 -- Bottom right text of the option panel --
 vdwsOptions1.BottomRightTxt:SetTextColor(C.Main:GetRGB())
-vdwsOptions1.BottomRightTxt:SetText(C_AddOns.GetAddOnMetadata("VDWS", "X-Website"))
+vdwsOptions1.BottomRightTxt:SetText("May the Good "..C.High:WrapTextInColorCode("Mojo").." be with you!")
 -- taking care of the boxes --
 vdwsOptions1Box1:SetHeight(224)
 vdwsOptions1Box3:SetHeight(144)

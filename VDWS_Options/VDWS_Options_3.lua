@@ -28,7 +28,7 @@ vdwsOptions3.TopTxt:SetTextColor(C.Main:GetRGB())
 vdwsOptions3.TopTxt:SetText("Error Frame, FPS Frame, etchetera")
 -- Bottom right text of the option panel --
 vdwsOptions3.BottomRightTxt:SetTextColor(C.Main:GetRGB())
-vdwsOptions3.BottomRightTxt:SetText(C_AddOns.GetAddOnMetadata("VDWS", "X-Website"))
+vdwsOptions3.BottomRightTxt:SetText("May the Good "..C.High:WrapTextInColorCode("Mojo").." be with you!")
 -- taking care of the boxes --
 vdwsOptions3Box1.Title:SetText("Error Frame")
 vdwsOptions3Box1:SetHeight(96)

@@ -18,7 +18,6 @@
 		<Layers>
 			<Layer level="BACKGROUND" textureSubLevel="0">
 				<Texture parentKey= "Background" rotation="0.0" atlas="parchmentpopup-filigree" useAtlasSize="false" setAllPoints="true">
-					<TexCoords left="0" right="1" top="1" bottom="0"/>
 				</Texture>
 			</Layer>
 		</Layers>
@@ -31,7 +30,6 @@
 		<Layers>
 			<Layer level="BACKGROUND" textureSubLevel="0">
 				<Texture parentKey= "Background" rotation="0.0" atlas="parchmentpopup-filigree" useAtlasSize="false" setAllPoints="true">
-					<TexCoords left="1" right="0" top="0" bottom="1"/>
 				</Texture>
 			</Layer>
 		</Layers>
@@ -44,7 +42,6 @@
 		<Layers>
 			<Layer level="BACKGROUND" textureSubLevel="0">
 				<Texture parentKey= "Background" rotation="0.0" atlas="parchmentpopup-filigree" useAtlasSize="false" setAllPoints="true">
-					<TexCoords left="1" right="0" top="1" bottom="0"/>
 				</Texture>
 			</Layer>
 		</Layers>

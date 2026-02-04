@@ -2,7 +2,7 @@
 ## IconAtlas: Relic-Arcane-TraitBG
 ## Title: Voodoo |cFF974CE7da|r Wow |cFF974CE7Suite|r
 ## Notes: One |cFF974CE7voodoo|r to bind them |cFF974CE7all|r!
-## Version: 1.00.00
+## Version: 1.01.00
 ## Category: UI Overhaul
 ## Category-deDE: UI-Überholung
 ## Category-esES: Renovación de la Interfaz de Usuario

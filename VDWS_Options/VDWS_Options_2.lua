@@ -27,7 +27,7 @@ vdwsOptions2.TopTxt:SetTextColor(C.Main:GetRGB())
 vdwsOptions2.TopTxt:SetText("Looty Groove Options")
 -- Bottom right text of the option panel --
 vdwsOptions2.BottomRightTxt:SetTextColor(C.Main:GetRGB())
-vdwsOptions2.BottomRightTxt:SetText(C_AddOns.GetAddOnMetadata("VDWS", "X-Website"))
+vdwsOptions2.BottomRightTxt:SetText("May the Good "..C.High:WrapTextInColorCode("Mojo").." be with you!")
 -- taking care of the boxes --
 vdwsOptions2Box1:SetHeight(408)
 vdwsOptions2Box2:SetHeight(128)

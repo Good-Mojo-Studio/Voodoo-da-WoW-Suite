@@ -22,7 +22,7 @@
 			<Layer level="OVERLAY">
 				<FontString parentKey="Title" font="vdw_FFshadow_18" justifyV="MIDDLE" justifyH="CENTER">
 					<Anchors>
-						<Anchor point="CENTER" relativePoint="TOP" x="0" y="-2"/>
+						<Anchor point="CENTER" relativePoint="TOP" x="0" y="10"/>
 					</Anchors>
 				</FontString>
 			</Layer>

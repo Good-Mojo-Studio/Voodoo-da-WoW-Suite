@@ -68,7 +68,7 @@ local function FirstTimeSavedVariables()
 	if VDWSsettings == nil then
 		VDWSsettings = {
 			FourEdges ={
-				Style = "Filigree",
+				Style = "Izes",
 				Color = "Class",
 				Alpha = 1,
 				Size = {W = 185, H = 152,},
@@ -315,15 +315,25 @@ end
 -- events time --
 local function EventsTime(self, event, arg1, arg2, arg3, arg4)
 	if event == "PLAYER_LOGIN" then
-		ProtectOptions()
 		CreateGlobalVariables()
 		FirstTimeSavedVariables()
+		ProtectOptions()
 		VDW.VDWS.ErrorFrameChk()
 		VDW.VDWS.FPScheck()
 		VDW.VDWS.ChatFrameChk()
 		VDW.VDWS.MMCFrameChk()
 		VDW.VDWS.StatusBarTextChk()
 		VDW.VDWS.MapClock24Chk()
+	elseif event == "PLAYER_ENTERING_WORLD" then
+		VDW.VDWS.FPScheck()
+	elseif event == "PLAYER_INTERACTION_MANAGER_FRAME_SHOW" then
+		if arg1 == 57 then
+			if FramerateFrame:IsShown() then FramerateFrame:Toggle() end
+		end
+	elseif event == "PLAYER_INTERACTION_MANAGER_FRAME_HIDE" then
+		if arg1 == 57 then
+			C_Timer.After(0.5, function() VDW.VDWS.FPScheck() end)
+		end
 	end
 end
 vdwsZlave:SetScript("OnEvent", EventsTime)

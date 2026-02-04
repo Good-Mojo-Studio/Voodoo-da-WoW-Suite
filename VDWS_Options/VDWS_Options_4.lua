@@ -26,7 +26,7 @@ vdwsOptions4.TopTxt:SetTextColor(C.Main:GetRGB())
 vdwsOptions4.TopTxt:SetText(L.P_TITLE)
 -- Bottom right text of the option panel --
 vdwsOptions4.BottomRightTxt:SetTextColor(C.Main:GetRGB())
-vdwsOptions4.BottomRightTxt:SetText(C_AddOns.GetAddOnMetadata("VDWS", "X-Website"))
+vdwsOptions4.BottomRightTxt:SetText("May the Good "..C.High:WrapTextInColorCode("Mojo").." be with you!")
 -- taking care of the boxes --
 vdwsOptions4Box1.Title:SetText(L.P_SUB_CREATE)
 vdwsOptions4Box2.Title:SetText(L.P_SUB_LOAD)
@@ -35,6 +35,9 @@ vdwsOptions4Box3.Title:SetText(L.P_SUB_DELETE)
 vdwsOptions4Box3:SetPoint("TOPLEFT", vdwsOptions4Box2, "BOTTOMLEFT", 0, 0)
 vdwsOptions4Box4.Title:SetText("Important Notes")
 vdwsOptions4Box4:SetPoint("TOPLEFT", vdwsOptions4Box3, "BOTTOMLEFT", 0, 0)
+vdwsOptions4Box4.Notes:SetTextColor(C.Main:GetRGB())
+vdwsOptions4Box4.Notes:SetWidth(vdwsOptions4Box4:GetWidth() - 8)
+vdwsOptions4Box4.Notes:SetText("|A:"..C_AddOns.GetAddOnMetadata("VDWS", "IconAtlas")..":16:16|a"..C.High:WrapTextInColorCode("Note: ").."When you "..C.High:WrapTextInColorCode("CREATE")..", "..C.High:WrapTextInColorCode("LOAD")..", "..C.High:WrapTextInColorCode("DELETE").." a Profile, the UI will be RELOADED!")
 -- Coloring the boxes --
 for i = 1, 4, 1 do
 	_G["vdwsOptions4Box"..i].Title:SetTextColor(C.Main:GetRGB())

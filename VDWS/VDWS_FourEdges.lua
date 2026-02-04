@@ -15,33 +15,77 @@ end
 -- checking function --
 function VDW.VDWS.FourEdgesChk()
 -- style --
-	if VDWSsettings.FourEdges.Style == "Filigree" then
+	if VDWSsettings.FourEdges.Style == "Izes" or VDWSsettings.FourEdges.Style == "Filigree"then
 		for i = 1, 4, 1 do
 			_G["vdwsFourEdges"..i]:ClearAllPoints()
 			if i == 1 then
 				_G["vdwsFourEdges"..i]:SetPoint("TOPLEFT", UIParent, "TOPLEFT", -16, 24)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(0, 1, 0, 1)
 			elseif i == 2 then
 				_G["vdwsFourEdges"..i]:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", -16, -24)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(0, 1, 1, 0)
 			elseif i == 3 then
 				_G["vdwsFourEdges"..i]:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", 16, 24)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(1, 0, 0, 1)
 			elseif i == 4 then
 				_G["vdwsFourEdges"..i]:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", 16, -24)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(1, 0, 1, 0)
 			end
 			_G["vdwsFourEdges"..i].Background:SetAtlas("parchmentpopup-filigree", false)
 		end
-	elseif VDWSsettings.FourEdges.Style == "CoolCorner" then
+	elseif VDWSsettings.FourEdges.Style == "Kedima" or VDWSsettings.FourEdges.Style == "CoolCorner" then
 		for i = 1, 4, 1 do
 			_G["vdwsFourEdges"..i]:ClearAllPoints()
 			if i == 1 then
 				_G["vdwsFourEdges"..i]:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 0, 0)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(0, 1, 0, 1)
 			elseif i == 2 then
 				_G["vdwsFourEdges"..i]:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 0, 0)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(0, 1, 1, 0)
 			elseif i == 3 then
 				_G["vdwsFourEdges"..i]:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", 0, 0)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(1, 0, 0, 1)
 			elseif i == 4 then
 				_G["vdwsFourEdges"..i]:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", 0, 0)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(1, 0, 1, 0)
 			end
 			_G["vdwsFourEdges"..i].Background:SetAtlas("collections-background-corner", false)
+		end
+	elseif VDWSsettings.FourEdges.Style == "Kuriza" then
+		for i = 1, 4, 1 do
+			_G["vdwsFourEdges"..i]:ClearAllPoints()
+			if i == 1 then
+				_G["vdwsFourEdges"..i]:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 0, 0)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(0, 1, 0, 1)
+			elseif i == 2 then
+				_G["vdwsFourEdges"..i]:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 0, 0)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(0, 1, 1, 0)
+			elseif i == 3 then
+				_G["vdwsFourEdges"..i]:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", 0, 0)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(1, 0, 0, 1)
+			elseif i == 4 then
+				_G["vdwsFourEdges"..i]:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", 0, 0)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(1, 0, 1, 0)
+			end
+			_G["vdwsFourEdges"..i].Background:SetAtlas("Garr_InfoBoxBorder-FiligreeCorner", false)
+		end
+	elseif VDWSsettings.FourEdges.Style == "Kladia" then
+		for i = 1, 4, 1 do
+			_G["vdwsFourEdges"..i]:ClearAllPoints()
+			if i == 1 then
+				_G["vdwsFourEdges"..i]:SetPoint("TOPLEFT", UIParent, "TOPLEFT", -8, 8)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(1, 0, 1, 0)
+			elseif i == 2 then
+				_G["vdwsFourEdges"..i]:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", -8, -8)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(1, 0, 0, 1)
+			elseif i == 3 then
+				_G["vdwsFourEdges"..i]:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", 8, 8)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(0, 1, 1, 0)
+			elseif i == 4 then
+				_G["vdwsFourEdges"..i]:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", 8, -8)
+				_G["vdwsFourEdges"..i].Background:SetTexCoord(0, 1, 0, 1)
+			end
+			_G["vdwsFourEdges"..i].Background:SetAtlas("decor-abilitybar-bookend-left", false)
 		end
 	end
 -- color --
