@@ -1,8 +1,8 @@
-## Interface: 120000
+## Interface: 120001
 ## IconAtlas: Relic-Arcane-TraitBG
 ## Title: Voodoo |cFF974CE7da|r Wow |cFF974CE7Suite|r Options
 ## Notes: Options for the Voodoo da Wow Suite
-## Version: 1.01.00
+## Version: 1.01.01
 ## Category: UI Overhaul
 ## Category-deDE: UI-Überholung
 ## Category-esES: Renovación de la Interfaz de Usuario

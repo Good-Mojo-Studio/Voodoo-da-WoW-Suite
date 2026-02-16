@@ -13,11 +13,11 @@ local fpsFonts = {"Normal 9", "Normal 10", "Normal 11", "Normal 12", "Normal 13"
 local fpsFontsColor = {G.OPTIONS_C_DEFAULT, G.OPTIONS_C_CLASS, G.OPTIONS_C_FACTION,} -- fpsBackgroundColor
 local fpsBackground = {"None", "Highlight", "Kyrian", "Necrolord", "Nightfae", "Venthyr",}
 -- Taking care of the option panel --
-vdwsOptions3:SetSize(576, 484)
+vdwsOptions3:SetSize(576, 498)
 vdwsOptions3:ClearAllPoints()
 vdwsOptions3:SetPoint("TOPLEFT", vdwsOptions0, "TOPLEFT", 0, 0)
 -- Background of the option panel --
-vdwsOptions3.BGtexture:SetTexture("Interface\\ACHIEVEMENTFRAME\\UI-Achievement-Parchment-Horizontal-Desaturated.blp", "CLAMP", "CLAMP", "NEAREST")
+vdwsOptions3.BGtexture:SetAtlas("UI-Frame-BossPortrait-Background", false)
 vdwsOptions3.BGtexture:SetVertexColor(C.High:GetRGB())
 vdwsOptions3.BGtexture:SetDesaturation(0.3)
 -- Title of the option panel --
@@ -31,9 +31,9 @@ vdwsOptions3.BottomRightTxt:SetTextColor(C.Main:GetRGB())
 vdwsOptions3.BottomRightTxt:SetText("May the Good "..C.High:WrapTextInColorCode("Mojo").." be with you!")
 -- taking care of the boxes --
 vdwsOptions3Box1.Title:SetText("Error Frame")
-vdwsOptions3Box1:SetHeight(96)
+vdwsOptions3Box1:SetHeight(104)
 vdwsOptions3Box2.Title:SetText("FPS Frame")
-vdwsOptions3Box2:SetHeight(144)
+vdwsOptions3Box2:SetHeight(148)
 vdwsOptions3Box2:ClearAllPoints()
 vdwsOptions3Box2:SetPoint("TOPLEFT", vdwsOptions3Box1, "BOTTOMLEFT", 0, 0)
 vdwsOptions3Box3.Title:SetText("et chetera")

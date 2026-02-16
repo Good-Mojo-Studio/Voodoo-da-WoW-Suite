@@ -7,18 +7,18 @@
 					<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x ="8" y="-64"/>
 				</Anchors>
 				<Frames>
-<!-- Pop Out 1 Fonts -->
-					<Button name="$parentPopOut1" inherits="vdwPopOut">
-						<Anchors>
-							<Anchor point="TOP" relativePoint="TOP" x="4" y="-56"/>
-						</Anchors>
-					</Button>
 <!-- Check Button 1, Change -->
 					<CheckButton name="$parentCheckButton1" inherits="vdwCheckButton">
 						<Anchors>
 							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="8" y="-24"/>
 						</Anchors>
 					</CheckButton>
+<!-- Pop Out 1 Fonts -->
+					<Button name="$parentPopOut1" inherits="vdwPopOut">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton1" relativePoint="TOPLEFT" x="0" y="-40"/>
+						</Anchors>
+					</Button>
 				</Frames>
 			</Frame>
 <!-- Options Box 1 FPS frame -->
@@ -33,13 +33,13 @@
 <!-- Pop Out 1 Fonts style -->
 					<Button name="$parentPopOut1" inherits="vdwPopOut">
 						<Anchors>
-							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton1" relativePoint="TOPLEFT" x="0" y="-32"/>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton1" relativePoint="TOPLEFT" x="0" y="-40"/>
 						</Anchors>
 					</Button>
 <!-- Pop Out 2 Fonts color -->
 					<Button name="$parentPopOut2" inherits="vdwPopOut">
 						<Anchors>
-							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="-4" y="0"/>
+							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="8" y="0"/>
 						</Anchors>
 					</Button>
 <!-- Pop Out 3 Background style -->
@@ -51,7 +51,7 @@
 <!-- Pop Out 4 Background color -->
 					<Button name="$parentPopOut4" inherits="vdwPopOut">
 						<Anchors>
-							<Anchor point="LEFT" relativeTo="$parentPopOut3" relativePoint="RIGHT" x="-4" y="0"/>
+							<Anchor point="LEFT" relativeTo="$parentPopOut3" relativePoint="RIGHT" x="8" y="0"/>
 						</Anchors>
 					</Button>
 				</Frames>

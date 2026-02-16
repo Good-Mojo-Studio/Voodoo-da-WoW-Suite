@@ -12,11 +12,11 @@ local backgroundStyle = {G.OPTIONS_C_DEFAULT}
 local fontsStyle = {"Normal 11", "Normal 12", "Normal 13", "Normal 14", "Funky 12", "Funky 13", "Funky 14", "Funky 15", "Funky 16", "Funky 17", "Groovy 11", "Groovy 12", "Groovy 13", "Groovy 14",}
 local color = {G.OPTIONS_C_DEFAULT, G.OPTIONS_C_CLASS, G.OPTIONS_C_FACTION,}
 -- Taking care of the option panel --
-vdwsOptions2:SetSize(576, 484)
+vdwsOptions2:SetSize(576, 498)
 vdwsOptions2:ClearAllPoints()
 vdwsOptions2:SetPoint("TOPLEFT", vdwsOptions0, "TOPLEFT", 0, 0)
 -- Background of the option panel --
-vdwsOptions2.BGtexture:SetTexture("Interface\\ACHIEVEMENTFRAME\\UI-Achievement-Parchment-Horizontal-Desaturated.blp", "CLAMP", "CLAMP", "NEAREST")
+vdwsOptions2.BGtexture:SetAtlas("UI-Frame-BossPortrait-Background", false)
 vdwsOptions2.BGtexture:SetVertexColor(C.High:GetRGB())
 vdwsOptions2.BGtexture:SetDesaturation(0.3)
 -- Title of the option panel --
@@ -30,9 +30,9 @@ vdwsOptions2.BottomRightTxt:SetTextColor(C.Main:GetRGB())
 vdwsOptions2.BottomRightTxt:SetText("May the Good "..C.High:WrapTextInColorCode("Mojo").." be with you!")
 -- taking care of the boxes --
 vdwsOptions2Box1:SetHeight(408)
-vdwsOptions2Box2:SetHeight(128)
+vdwsOptions2Box2:SetHeight(136)
 vdwsOptions2Box3:SetHeight(144)
-vdwsOptions2Box4:SetHeight(128)
+vdwsOptions2Box4:SetHeight(136)
 vdwsOptions2Box1.Title:SetText(L.W_VISIBILITY)
 vdwsOptions2Box2.Title:SetText("Background")
 vdwsOptions2Box3.Title:SetText("Size")

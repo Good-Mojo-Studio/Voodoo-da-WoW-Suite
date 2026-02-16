@@ -10,11 +10,11 @@ local counter = 0
 local style = {"Izes", "Kedima", "Kuriza", "Kladia",}
 local color = {G.OPTIONS_C_DEFAULT, G.OPTIONS_C_CLASS, G.OPTIONS_C_FACTION,}
 -- Taking care of the option panel --
-vdwsOptions1:SetSize(576, 484)
+vdwsOptions1:SetSize(576, 498)
 vdwsOptions1:ClearAllPoints()
 vdwsOptions1:SetPoint("TOPLEFT", vdwsOptions0, "TOPLEFT", 0, 0)
 -- Background of the option panel --
-vdwsOptions1.BGtexture:SetTexture("Interface\\ACHIEVEMENTFRAME\\UI-Achievement-Parchment-Horizontal-Desaturated.blp", "CLAMP", "CLAMP", "NEAREST")
+vdwsOptions1.BGtexture:SetAtlas("UI-Frame-BossPortrait-Background", false)
 vdwsOptions1.BGtexture:SetVertexColor(C.High:GetRGB())
 vdwsOptions1.BGtexture:SetDesaturation(0.3)
 -- Title of the option panel --
@@ -325,6 +325,6 @@ vdwsOptions0:SetHeight(vdwsOptions1:GetHeight())
 vdwsOptions0.BGtexture:ClearAllPoints()
 vdwsOptions0.BGtexture:SetPoint("TOPRIGHT", vdwsOptions0, "TOPRIGHT", 0, 0)
 vdwsOptions0.BGtexture:SetPoint("BOTTOMLEFT", vdwsOptions0, "BOTTOMLEFT", OptionsW, 0)
-vdwsOptions0.BGtexture:SetTexture("Interface\\ACHIEVEMENTFRAME\\UI-Achievement-Parchment-Horizontal-Desaturated.blp", "CLAMP", "CLAMP", "NEAREST")
+vdwsOptions0.BGtexture:SetAtlas("UI-Frame-BossPortrait-Background", false)
 vdwsOptions0.BGtexture:SetDesaturation(0.3)
 vdwsOptions0.BGtexture:SetGradient("VERTICAL", C.NoHigh, C.High)

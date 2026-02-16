@@ -81,19 +81,19 @@
 <!-- Pop Out 1 Style -->
 					<Button name="$parentPopOut1" inherits="vdwPopOut">
 						<Anchors>
-							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="4" y="-32"/>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="4" y="-40"/>
 						</Anchors>
 					</Button>
 <!-- Pop Out 2 Color -->
 					<Button name="$parentPopOut2" inherits="vdwPopOut">
 						<Anchors>
-							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="-4" y="0"/>
+							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="8" y="0"/>
 						</Anchors>
 					</Button>
 <!--Slider 1, Opacity -->	
 					<Frame name="$parentSlider1" inherits="vdwSlider">
 						<Anchors>
-							<Anchor point="TOP" relativeKey="$parent.Title" relativePoint="BOTTOM" x="0" y="-48"/>
+							<Anchor point="TOP" relativeKey="$parent.Title" relativePoint="BOTTOM" x="0" y="-56"/>
 						</Anchors>
 					</Frame>
 				</Frames>
@@ -121,19 +121,19 @@
 <!-- Pop Out 1 Style -->
 					<Button name="$parentPopOut1" inherits="vdwPopOut">
 						<Anchors>
-							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="4" y="-32"/>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="4" y="-40"/>
 						</Anchors>
 					</Button>
 <!-- Pop Out 2 Color -->
 					<Button name="$parentPopOut2" inherits="vdwPopOut">
 						<Anchors>
-							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="-4" y="0"/>
+							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="8" y="0"/>
 						</Anchors>
 					</Button>
 <!--Slider 1, Opacity -->	
 					<Frame name="$parentSlider1" inherits="vdwSlider">
 						<Anchors>
-							<Anchor point="TOP" relativeKey="$parent.Title" relativePoint="BOTTOM" x="0" y="-48"/>
+							<Anchor point="TOP" relativeKey="$parent.Title" relativePoint="BOTTOM" x="0" y="-56"/>
 						</Anchors>
 					</Frame>
 				</Frames>

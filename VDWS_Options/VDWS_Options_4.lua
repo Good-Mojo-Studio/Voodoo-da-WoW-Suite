@@ -11,11 +11,11 @@ local  number = 0
 local counterLoading = 0
 local counterDeleting = 0
 -- Taking care of the option panel --
-vdwsOptions4:SetSize(576, 484)
+vdwsOptions4:SetSize(576, 498)
 vdwsOptions4:ClearAllPoints()
 vdwsOptions4:SetPoint("TOPLEFT", vdwsOptions0, "TOPLEFT", 0, 0)
 -- Background of the option panel --
-vdwsOptions4.BGtexture:SetTexture("Interface\\ACHIEVEMENTFRAME\\UI-Achievement-Parchment-Horizontal-Desaturated.blp", "CLAMP", "CLAMP", "NEAREST")
+vdwsOptions4.BGtexture:SetAtlas("UI-Frame-BossPortrait-Background", false)
 vdwsOptions4.BGtexture:SetVertexColor(C.High:GetRGB())
 vdwsOptions4.BGtexture:SetDesaturation(0.3)
 -- Title of the option panel --
