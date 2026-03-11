@@ -3,7 +3,6 @@ local G = VDW.Local.Override
 local L = VDW.VDWS.Local
 local C = VDW.GetAddonColors("VDWS")
 local prefixTip = VDW.Prefix("VDWS")
-local prefixChat = VDW.PrefixChat("VDWS")
 local NameExist = false
 local maxW = 160
 local finalW = 0
@@ -26,7 +25,7 @@ vdwsOptions4.TopTxt:SetTextColor(C.Main:GetRGB())
 vdwsOptions4.TopTxt:SetText(L.P_TITLE)
 -- Bottom right text of the option panel --
 vdwsOptions4.BottomRightTxt:SetTextColor(C.Main:GetRGB())
-vdwsOptions4.BottomRightTxt:SetText("May the Good "..C.High:WrapTextInColorCode("Mojo").." be with you!")
+vdwsOptions4.BottomRightTxt:SetText("May the Good "..C.High:WrapTextInColorCode("Mojo").." be with you! ")
 -- taking care of the boxes --
 vdwsOptions4Box1.Title:SetText(L.P_SUB_CREATE)
 vdwsOptions4Box2.Title:SetText(L.P_SUB_LOAD)
@@ -88,7 +87,7 @@ vdwsOptions4Box1EditBox1.WritingLine:SetScript("OnEnterPressed", function(self)
 				NameExist = false
 			end
 			if NameExist then
-				DEFAULT_CHAT_FRAME:AddMessage(C.Main:WrapTextInColorCode(prefixChat.." "..L.P_WRN_EXIST))
+				DEFAULT_CHAT_FRAME:AddMessage(C.Main:WrapTextInColorCode(VDW.PrefixChat("VDWS").." "..L.P_WRN_EXIST))
 				return
 			end
 		end
@@ -96,7 +95,7 @@ vdwsOptions4Box1EditBox1.WritingLine:SetScript("OnEnterPressed", function(self)
 		VDWSprofiles[name] = {settings = VDWSsettings, localization = VDWSspecialSettings.LastLocation}
 		C_UI.Reload()
 	else
-		DEFAULT_CHAT_FRAME:AddMessage(C.Main:WrapTextInColorCode(prefixChat.." "..L.P_WRN_NEED))
+		DEFAULT_CHAT_FRAME:AddMessage(C.Main:WrapTextInColorCode(VDW.PrefixChat("VDWS").." "..L.P_WRN_NEED))
 	end
 end)
 -- Pop out 1 Buttons loading profiles  --
@@ -117,7 +116,7 @@ vdwsOptions4Box2PopOut1:HookScript("OnClick", function(self, button, down)
 				vdwsOptions4Box2PopOut1Choice1:Hide()
 			end
 		else
-			DEFAULT_CHAT_FRAME:AddMessage(C.Main:WrapTextInColorCode(prefixChat.." "..L.P_WRN_LOAD))
+			DEFAULT_CHAT_FRAME:AddMessage(C.Main:WrapTextInColorCode(VDW.PrefixChat("VDWS").." "..L.P_WRN_LOAD))
 		end
 	end
 end)
@@ -139,7 +138,7 @@ vdwsOptions4Box3PopOut1:HookScript("OnClick", function(self, button, down)
 				vdwsOptions4Box3PopOut1Choice1:Hide()
 			end
 		else
-			DEFAULT_CHAT_FRAME:AddMessage(C.Main:WrapTextInColorCode(prefixChat.." "..L.P_WRN_DELETE))
+			DEFAULT_CHAT_FRAME:AddMessage(C.Main:WrapTextInColorCode(VDW.PrefixChat("VDWS").." "..L.P_WRN_DELETE))
 		end
 	end
 end)

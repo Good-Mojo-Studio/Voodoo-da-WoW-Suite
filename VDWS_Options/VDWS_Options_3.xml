@@ -19,9 +19,39 @@
 							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton1" relativePoint="TOPLEFT" x="0" y="-40"/>
 						</Anchors>
 					</Button>
+<!-- Pop Out 2 Style 1 -->
+					<Button name="$parentPopOut2" inherits="vdwPopOut">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="8" y="0"/>
+						</Anchors>
+					</Button>
+<!-- Pop Out 3 Style 2 -->
+					<Button name="$parentPopOut3" inherits="vdwPopOut">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="8" y="0"/>
+						</Anchors>
+					</Button>
+<!-- Pop Out 4 Style 3 -->
+					<Button name="$parentPopOut4" inherits="vdwPopOut">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="8" y="0"/>
+						</Anchors>
+					</Button>
+<!-- Pop Out 5 color warning -->
+					<Button name="$parentPopOut5" inherits="vdwPopOut">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentPopOut1" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+						</Anchors>
+					</Button>
+<!-- Pop Out 6 color error -->
+					<Button name="$parentPopOut6" inherits="vdwPopOut">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentPopOut5" relativePoint="RIGHT" x="8" y="0"/>
+						</Anchors>
+					</Button>
 				</Frames>
 			</Frame>
-<!-- Options Box 1 FPS frame -->
+<!-- Options Box 2 FPS frame -->
 			<Frame name="$parentBox2" inherits="vdwOptionsBox">
 				<Frames>
 <!-- Check Button 1, Change -->
@@ -30,28 +60,34 @@
 							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="8" y="-24"/>
 						</Anchors>
 					</CheckButton>
-<!-- Pop Out 1 Fonts style -->
+<!-- Pop Out 1 Fonts -->
 					<Button name="$parentPopOut1" inherits="vdwPopOut">
 						<Anchors>
 							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton1" relativePoint="TOPLEFT" x="0" y="-40"/>
 						</Anchors>
 					</Button>
-<!-- Pop Out 2 Fonts color -->
+<!-- Pop Out 2 Style 1 -->
 					<Button name="$parentPopOut2" inherits="vdwPopOut">
 						<Anchors>
 							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="8" y="0"/>
 						</Anchors>
 					</Button>
-<!-- Pop Out 3 Background style -->
+<!-- Pop Out 2 Style 2 -->
 					<Button name="$parentPopOut3" inherits="vdwPopOut">
 						<Anchors>
-							<Anchor point="TOPLEFT" relativeTo="$parentPopOut1" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="8" y="0"/>
 						</Anchors>
 					</Button>
-<!-- Pop Out 4 Background color -->
+<!-- Pop Out 2 Style 3 -->
 					<Button name="$parentPopOut4" inherits="vdwPopOut">
 						<Anchors>
-							<Anchor point="LEFT" relativeTo="$parentPopOut3" relativePoint="RIGHT" x="8" y="0"/>
+							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="8" y="0"/>
+						</Anchors>
+					</Button>
+<!-- Pop Out 5 font color -->
+					<Button name="$parentPopOut5" inherits="vdwPopOut">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentPopOut1" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
 						</Anchors>
 					</Button>
 				</Frames>
@@ -59,30 +95,41 @@
 <!-- Options Box 3 et chetera -->
 			<Frame name="$parentBox3" inherits="vdwOptionsBox">
 				<Frames>
+<!-- Check Button 1, Show Micro Menu Container Background -->
+					<CheckButton name="$parentCheckButton1" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="8" y="-24"/>
+						</Anchors>
+					</CheckButton>
+<!-- Check Button 2, Show Status Bar Text -->
+					<CheckButton name="$parentCheckButton2" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton1" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+						</Anchors>
+					</CheckButton>
+<!-- Check Button 3, Turn Map Clock into 24hours -->
+					<CheckButton name="$parentCheckButton3" inherits="vdwCheckButton">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton2" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+						</Anchors>
+					</CheckButton>
+				</Frames>
+			</Frame>
+<!-- Options Box 3 Chat Baclground -->
+			<Frame name="$parentBox4" inherits="vdwOptionsBox">
+				<Frames>
 <!-- Check Button 1, Show Chat Baclground -->
 					<CheckButton name="$parentCheckButton1" inherits="vdwCheckButton">
 						<Anchors>
 							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="8" y="-24"/>
 						</Anchors>
 					</CheckButton>
-<!-- Check Button 2, Show Micro Menu Container Background -->
-					<CheckButton name="$parentCheckButton2" inherits="vdwCheckButton">
+<!-- Pop Out 1 Style -->
+					<Button name="$parentPopOut1" inherits="vdwPopOut">
 						<Anchors>
-							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton1" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
+							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton1" relativePoint="TOPLEFT" x="0" y="-40"/>
 						</Anchors>
-					</CheckButton>
-<!-- Check Button 3, Show Status Bar Text -->
-					<CheckButton name="$parentCheckButton3" inherits="vdwCheckButton">
-						<Anchors>
-							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton2" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
-						</Anchors>
-					</CheckButton>
-<!-- Check Button 4, Turn Map Clock into 24hours -->
-					<CheckButton name="$parentCheckButton4" inherits="vdwCheckButton">
-						<Anchors>
-							<Anchor point="TOPLEFT" relativeTo="$parentCheckButton3" relativePoint="BOTTOMLEFT" x="0" y="-12"/>
-						</Anchors>
-					</CheckButton>
+					</Button>
 				</Frames>
 			</Frame>
 		</Frames>

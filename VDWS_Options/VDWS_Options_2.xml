@@ -124,8 +124,20 @@
 							<Anchor point="TOPLEFT" relativePoint="TOPLEFT" x="4" y="-40"/>
 						</Anchors>
 					</Button>
-<!-- Pop Out 2 Color -->
+<!-- Pop Out 2 Style 1 -->
 					<Button name="$parentPopOut2" inherits="vdwPopOut">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="8" y="0"/>
+						</Anchors>
+					</Button>
+<!-- Pop Out 2 Style 2 -->
+					<Button name="$parentPopOut3" inherits="vdwPopOut">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="8" y="0"/>
+						</Anchors>
+					</Button>
+<!-- Pop Out 2 Style 3 -->
+					<Button name="$parentPopOut4" inherits="vdwPopOut">
 						<Anchors>
 							<Anchor point="LEFT" relativeTo="$parentPopOut1" relativePoint="RIGHT" x="8" y="0"/>
 						</Anchors>

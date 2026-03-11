@@ -3,7 +3,6 @@ local G = VDW.Local.Override
 local L = VDW.VDWS.Local
 local C = VDW.GetAddonColors("VDWS")
 local prefixTip = VDW.Prefix("VDWS")
-local prefixChat = VDW.PrefixChat("VDWS")
 local maxW = 160
 local finalW = 0
 local counter = 0
@@ -22,16 +21,16 @@ vdwsOptions1.Title:SetTextColor(C.Main:GetRGB())
 vdwsOptions1.Title:SetText(prefixTip.."|nVersion: "..C.High:WrapTextInColorCode(C_AddOns.GetAddOnMetadata("VDWS", "Version")))
 -- Top text of the option panel --
 vdwsOptions1.TopTxt:SetTextColor(C.Main:GetRGB())
-vdwsOptions1.TopTxt:SetText("Four Edges Options")
+vdwsOptions1.TopTxt:SetText(string.format(L.OPTIONS_FOR, L.FOUR_EDGES))
 -- Bottom right text of the option panel --
 vdwsOptions1.BottomRightTxt:SetTextColor(C.Main:GetRGB())
-vdwsOptions1.BottomRightTxt:SetText("May the Good "..C.High:WrapTextInColorCode("Mojo").." be with you!")
+vdwsOptions1.BottomRightTxt:SetText("May the Good "..C.High:WrapTextInColorCode("Mojo").." be with you! ")
 -- taking care of the boxes --
 vdwsOptions1Box1:SetHeight(224)
 vdwsOptions1Box3:SetHeight(144)
-vdwsOptions1Box1.Title:SetText(L.W_VISIBILITY)
-vdwsOptions1Box2.Title:SetText("Artwork")
-vdwsOptions1Box3.Title:SetText("Size")
+vdwsOptions1Box1.Title:SetText(L.VISIBILITY)
+vdwsOptions1Box2.Title:SetText(L.ARTWORK)
+vdwsOptions1Box3.Title:SetText(L.SIZE)
 vdwsOptions1Box2:ClearAllPoints()
 vdwsOptions1Box2:SetPoint("TOPLEFT", vdwsOptions1Box1, "TOPRIGHT", 0, 0)
 vdwsOptions1Box3:ClearAllPoints()
@@ -68,15 +67,15 @@ local function MouseWheelSlider(self, delta)
 	end
 end
 -- check button show - hide edge artwork --
-vdwsOptions1Box1CheckButton1.Text:SetText("Top left edge artwork")
-vdwsOptions1Box1CheckButton2.Text:SetText("Bottom left edge artwork")
-vdwsOptions1Box1CheckButton3.Text:SetText("Top right edge artwork")
-vdwsOptions1Box1CheckButton4.Text:SetText("Bottom right edge artwork")
+vdwsOptions1Box1CheckButton1.Text:SetText(L.TOP_LEFT_EDGE_ARTWORK)
+vdwsOptions1Box1CheckButton2.Text:SetText(L.BOTTOM_LEFT_EDGE_ARTWORK)
+vdwsOptions1Box1CheckButton3.Text:SetText(L.TOP_RIGHT_EDGE_ARTWORK)
+vdwsOptions1Box1CheckButton4.Text:SetText(L.BOTTOM_RIGHT_EDGE_ARTWORK)
 for i = 1, 4, 1 do
 	_G["vdwsOptions1Box1CheckButton"..i].Text:SetWidth(vdwsOptions1Box1:GetWidth()*0.8)
 	_G["vdwsOptions1Box1CheckButton"..i]:SetScript("OnEnter", function(self)
 		local word = self.Text:GetText()
-		VDW.Tooltip_Show(self, prefixTip, string.format(L.W_CHECKBOX_TIP, word), C.Main)
+		VDW.Tooltip_Show(self, prefixTip, string.format(L.CHECK_VISIBILITY_TIP, word), C.Main)
 	end)
 	_G["vdwsOptions1Box1CheckButton"..i]:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
 	_G["vdwsOptions1Box1CheckButton"..i]:HookScript("OnClick", function (self, button)
@@ -101,12 +100,12 @@ vdwsOptions1Box1Slider1.Forward:GetRegions():SetVertexColor(C.Main:GetRGB())
 vdwsOptions1Box1Slider1.TopText:SetTextColor(C.High:GetRGB())
 vdwsOptions1Box1Slider1.MinText:SetTextColor(C.High:GetRGB())
 vdwsOptions1Box1Slider1.MaxText:SetTextColor(C.High:GetRGB())
-vdwsOptions1Box1Slider1.MinText:SetText(0)
-vdwsOptions1Box1Slider1.MaxText:SetText(1)
+vdwsOptions1Box1Slider1.MinText:SetText("0%")
+vdwsOptions1Box1Slider1.MaxText:SetText("100%")
 vdwsOptions1Box1Slider1.Slider:SetMinMaxValues(0, 100)
 -- enter --
 vdwsOptions1Box1Slider1.Slider:HookScript("OnEnter", function(self)
-	VDW.Tooltip_Show(self, prefixTip, L.W_SLIDER_TIP, C.Main)
+	VDW.Tooltip_Show(self, prefixTip, L.SLIDER_TIP, C.Main)
 end)
 -- leave --
 vdwsOptions1Box1Slider1.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
@@ -114,7 +113,7 @@ vdwsOptions1Box1Slider1.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_
 vdwsOptions1Box1Slider1.Slider:SetScript("OnMouseWheel", MouseWheelSlider)
 -- value change --
 vdwsOptions1Box1Slider1.Slider:SetScript("OnValueChanged", function (self, value, userInput)
-	vdwsOptions1Box1Slider1.TopText:SetText("Opacity: "..self:GetValue()/100)
+	vdwsOptions1Box1Slider1.TopText:SetText(string.format(L.SLIDER_TEXT_OPACITY, self:GetValue()).."%")
 	VDWSsettings.FourEdges.Alpha = self:GetValue()/100
 	for i = 1, 4, 1 do
 		_G["vdwsFourEdges"..i]:SetAlpha(VDWSsettings.FourEdges.Alpha)
@@ -123,7 +122,7 @@ vdwsOptions1Box1Slider1.Slider:SetScript("OnValueChanged", function (self, value
 end)
 -- popout artwork --
 ColoringPopOutButtons(2, 1)
-vdwsOptions1Box2PopOut1.Title:SetText(L.W_STYLE)
+vdwsOptions1Box2PopOut1.Title:SetText(L.STYLE)
 for i, name in ipairs(style) do
 	counter = counter + 1
 	local btn = CreateFrame("Button", "vdwsOptions1Box2PopOut1Choice"..i, nil, "vdwPopOutButton")
@@ -165,7 +164,7 @@ maxW = 160
 vdwsOptions1Box2PopOut1:HookScript("OnEnter", function(self)
 	local parent = self:GetParent()
 	local word = parent.Title:GetText()
-	VDW.Tooltip_Show(self, prefixTip, string.format(L.W_S_TIP, word), C.Main)
+	VDW.Tooltip_Show(self, prefixTip, string.format(L.STYLE_TIP, word), C.Main)
 end)
 vdwsOptions1Box2PopOut1:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
 vdwsOptions1Box2PopOut1:HookScript("OnClick", function(self, button, down)
@@ -179,7 +178,7 @@ vdwsOptions1Box2PopOut1:HookScript("OnClick", function(self, button, down)
 end)
 -- popout color --
 ColoringPopOutButtons(2, 2)
-vdwsOptions1Box2PopOut2.Title:SetText(L.W_COLOR)
+vdwsOptions1Box2PopOut2.Title:SetText(L.COLOR)
 for i, name in ipairs(color) do
 	counter = counter + 1
 	local btn = CreateFrame("Button", "vdwsOptions1Box2PopOut2Choice"..i, nil, "vdwPopOutButton")
@@ -221,7 +220,7 @@ maxW = 160
 vdwsOptions1Box2PopOut2:HookScript("OnEnter", function(self)
 	local parent = self:GetParent()
 	local word = parent.Title:GetText()
-	VDW.Tooltip_Show(self, prefixTip, string.format(L.W_C_TIP, word), C.Main)
+	VDW.Tooltip_Show(self, prefixTip, string.format(L.COLOR_TIP, word), C.Main)
 end)
 vdwsOptions1Box2PopOut2:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
 vdwsOptions1Box2PopOut2:HookScript("OnClick", function(self, button, down)
@@ -246,7 +245,7 @@ vdwsOptions1Box3Slider1.MaxText:SetText(560)
 vdwsOptions1Box3Slider1.Slider:SetMinMaxValues(80, 560)
 -- enter --
 vdwsOptions1Box3Slider1.Slider:HookScript("OnEnter", function(self)
-	VDW.Tooltip_Show(self, prefixTip, L.W_SLIDER_TIP, C.Main)
+	VDW.Tooltip_Show(self, prefixTip, L.SLIDER_TIP, C.Main)
 end)
 -- leave --
 vdwsOptions1Box3Slider1.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
@@ -254,7 +253,7 @@ vdwsOptions1Box3Slider1.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_
 vdwsOptions1Box3Slider1.Slider:SetScript("OnMouseWheel", MouseWheelSlider)
 -- value change --
 vdwsOptions1Box3Slider1.Slider:SetScript("OnValueChanged", function (self, value, userInput)
-	vdwsOptions1Box3Slider1.TopText:SetText("Width: "..self:GetValue())
+	vdwsOptions1Box3Slider1.TopText:SetText(string.format(L.SLIDER_TEXT_WIDTH, self:GetValue()))
 	VDWSsettings.FourEdges.Size.W = self:GetValue()
 	for i = 1, 4, 1 do
 		_G["vdwsFourEdges"..i]:SetWidth(VDWSsettings.FourEdges.Size.W)
@@ -274,7 +273,7 @@ vdwsOptions1Box3Slider2.MaxText:SetText(560)
 vdwsOptions1Box3Slider2.Slider:SetMinMaxValues(80, 560)
 -- enter --
 vdwsOptions1Box3Slider2.Slider:HookScript("OnEnter", function(self)
-	VDW.Tooltip_Show(self, prefixTip, L.W_SLIDER_TIP, C.Main)
+	VDW.Tooltip_Show(self, prefixTip, L.SLIDER_TIP, C.Main)
 end)
 -- leave --
 vdwsOptions1Box3Slider2.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
@@ -282,7 +281,7 @@ vdwsOptions1Box3Slider2.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_
 vdwsOptions1Box3Slider2.Slider:SetScript("OnMouseWheel", MouseWheelSlider)
 -- value change --
 vdwsOptions1Box3Slider2.Slider:SetScript("OnValueChanged", function (self, value, userInput)
-	vdwsOptions1Box3Slider2.TopText:SetText("Height: "..self:GetValue())
+	vdwsOptions1Box3Slider2.TopText:SetText(string.format(L.SLIDER_TEXT_HEIGHT, self:GetValue()))
 	VDWSsettings.FourEdges.Size.H = self:GetValue()
 	for i = 1, 4, 1 do
 		_G["vdwsFourEdges"..i]:SetHeight(VDWSsettings.FourEdges.Size.H)

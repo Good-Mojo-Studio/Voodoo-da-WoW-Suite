@@ -6,15 +6,15 @@
 				self:RegisterEvent("PLAYER_ENTERING_WORLD")
 				self:RegisterEvent("PLAYER_INTERACTION_MANAGER_FRAME_SHOW")
 				self:RegisterEvent("PLAYER_INTERACTION_MANAGER_FRAME_HIDE")
+				self:RegisterEvent("PET_BATTLE_OPENING_DONE")
+				self:RegisterEvent("PET_BATTLE_CLOSE")
+				self:RegisterEvent("PLAY_MOVIE")
+				self:RegisterEvent("STOP_MOVIE")
+				self:RegisterEvent("SYSMSG")
+				self:RegisterEvent("UI_INFO_MESSAGE")
+				self:RegisterEvent("UI_ERROR_MESSAGE")
 			</OnLoad>
 		</Scripts>
-	</Frame>
-	<Frame name="vdwsFPS" parent="FramerateFrame" frameStrata="BACKGROUND" frameLevel="0" clampedToScreen="true" setAllPoints="true">
-		<Layers>
-			<Layer level="BACKGROUND" textureSubLevel="0">
-				<Texture parentKey= "Background" rotation="0.0" atlas="GarrMissionLocation-Maw-ButtonHighlight" useAtlasSize="false" setAllPoints="true"/>
-			</Layer>
-		</Layers>
 	</Frame>
 	<Frame name="vdwsMMC" parent="MicroMenuContainer" frameStrata="BACKGROUND" frameLevel="0" clampedToScreen="true" setAllPoints="true">
 		<Layers>
@@ -26,7 +26,7 @@
 	<Frame name="vdwsChat" frameStrata="BACKGROUND" frameLevel="0" clampedToScreen="true" setAllPoints="true" virtual="true">
 		<Layers>
 			<Layer level="BACKGROUND" textureSubLevel="0">
-				<Texture parentKey= "Background" rotation="0.0" atlas="Artifacts-BG-Shadow" useAtlasSize="false" setAllPoints="true"/>
+				<Texture parentKey= "Background" rotation="0.0" atlas="Artifacts-BG-Shadow" useAtlasSize="false" setAllPoints="true"/> 
 			</Layer>
 		</Layers>
 	</Frame>

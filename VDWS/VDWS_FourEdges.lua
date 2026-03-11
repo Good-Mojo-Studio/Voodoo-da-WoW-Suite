@@ -2,7 +2,7 @@ local G = VDW.Local.Override
 -- protect the options --
 local function ProtectOptions()
 	local loc = GetLocale()
-	if loc ~= VDWSspecialSettings.LastLocation then
+	if loc ~= VDWSsettings.LastLocation then
 		for k, v in pairs(VDW.Local.Translate) do
 			for i, s in pairs (v) do
 				if VDWSsettings.FourEdges.Color == s then

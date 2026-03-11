@@ -52,13 +52,10 @@ local function CreateGlobalVariables()
 			end
 		end,
 		funcOnEnter = function(button)
-			MenuUtil.ShowTooltip(button, function(tooltip)
-			tooltip:SetOwner(AddonCompartmentFrame, "ANCHOR_TOP", 0, 0)
-			tooltip:SetText(C.Main:WrapTextInColorCode(prefixTip).."|n"..G.BUTTON_L_CLICK..": "..G.TIP_OPEN_SETTINGS_MAIN)
-			end)
+			VDW.Tooltip_Show(button, prefixTip, G.BUTTON_L_CLICK..": "..G.TIP_OPEN_SETTINGS_MAIN, C.Main)
 		end,
 		funcOnLeave = function(button)
-			MenuUtil.HideTooltip(AddonCompartmentFrame)
+			VDW.Tooltip_Hide()
 		end,
 	})
 end
@@ -69,7 +66,7 @@ local function FirstTimeSavedVariables()
 		VDWSsettings = {
 			FourEdges ={
 				Style = "Izes",
-				Color = "Class",
+				Color = G.OPTIONS_C_CLASS,
 				Alpha = 1,
 				Size = {W = 185, H = 152,},
 				vdwsFourEdges1 = true, vdwsFourEdges2 = true, vdwsFourEdges3 = true, vdwsFourEdges4 = true,
@@ -79,8 +76,8 @@ local function FirstTimeSavedVariables()
 				Title = true,
 				Size = {W = 376, H = 104,},
 				Position = {X = 580, Y = 410,},
-				Fonts = {Style = "Normal 13", Color = "Default",},
-				Background = {Style = "Default", Color = "Default", Alpha = 0.6,},
+				Fonts = {Style = "Normal 13", Color = G.OPTIONS_C_DEFAULT,},
+				Background = {Style = G.OPTIONS_C_DEFAULT, Color = G.OPTIONS_C_DEFAULT, Alpha = 0.6,},
 				Duration = 25,
 				SSOA = true,
 				Loot = true,
@@ -98,8 +95,7 @@ local function FirstTimeSavedVariables()
 			},
 			FPSframe = {
 				Visible = true,
-				Fonts = {Style = "Normal 15", Color = "Default",},
-				Background = {Style = "Highlight", Color = "Default",},
+				Fonts = {Style = "Normal 15", Color = G.OPTIONS_C_DEFAULT,},
 				Position = {X = 950, Y = 540,},
 			},
 			MicroMenuContainer = {
@@ -114,43 +110,106 @@ local function FirstTimeSavedVariables()
 	end
 -- special settings --
 	if VDWSspecialSettings == nil then VDWSspecialSettings = {} end
-	if VDWSspecialSettings["LastLocation"] == nil then
-		VDWSspecialSettings["LastLocation"] = GetLocale()
-	end
+-- extra settings --
+	if VDWSsettings.LastLocation == nil then VDWSsettings.LastLocation = GetLocale() end
+	if VDWSsettings.ErrorFrame.Fonts.Family == nil then VDWSsettings.ErrorFrame.Fonts.Family = "Normal" end
+	if VDWSsettings.FPSframe.Fonts.Family == nil then VDWSsettings.FPSframe.Fonts.Family = "Normal" end
+	if VDWSsettings.FPSframe.Background ~= nil then VDWSsettings.FPSframe.Background = nil end
+	if VDWSsettings.Chat.Background == nil then VDWSsettings.Chat.Background = {Style = G.OPTIONS_C_DEFAULT} end
+	if VDWSsettings.ErrorFrame.Fonts.WarningColor == nil then VDWSsettings.ErrorFrame.Fonts.WarningColor = G.OPTIONS_C_DEFAULT end
+	if VDWSsettings.ErrorFrame.Fonts.ErrorColor == nil then VDWSsettings.ErrorFrame.Fonts.ErrorColor = G.OPTIONS_C_DEFAULT end
 end
 -- protect the options --
 local function ProtectOptions()
 	local loc = GetLocale()
-	if loc ~= VDWSspecialSettings.LastLocation then
+	if loc ~= VDWSsettings.LastLocation then
 		for k, v in pairs(VDW.Local.Translate) do
 			for i, s in pairs (v) do
 				if VDWSsettings.FPSframe.Fonts.Color == s then
 					VDWSsettings.FPSframe.Fonts.Color = VDW.Local.Translate[loc][i]
 				end
-				if VDWSsettings.FPSframe.Background.Color == s then
-					VDWSsettings.FPSframe.Background.Color = VDW.Local.Translate[loc][i]
+				if VDWSsettings.Chat.Background.Style == s then
+					VDWSsettings.Chat.Background.Style = VDW.Local.Translate[loc][i]
 				end
 			end
 		end
 	end
 end
+-- Function for stoping the movement --
+local function StopMoving(self)
+	VDWSsettings.FPSframe.Position.X = Round(self:GetLeft())
+	VDWSsettings.FPSframe.Position.Y = Round(self:GetBottom())
+	self:StopMovingOrSizing()
+end
 -- Error frame --
 function VDW.VDWS.ErrorFrameChk()
 	if VDWSsettings.ErrorFrame.Changed then
-		for i = 13, 22, 1 do
-			if VDWSsettings.ErrorFrame.Fonts.Style == "Normal "..i then
-				UIErrorsFrame:SetFontObject(_G["vdws_NFshadowOut_"..i])
-			elseif VDWSsettings.ErrorFrame.Fonts.Style == "Funky "..i then
-				UIErrorsFrame:SetFontObject(_G["vdws_FFshadowOut_"..i])
-			elseif VDWSsettings.ErrorFrame.Fonts.Style == "Groovy "..i then
-				UIErrorsFrame:SetFontObject(_G["vdws_GFshadowOut_"..i])
+		function UIErrorsFrame:TryDisplayMessage(messageType, message, r, g, b)
+			if not self:GetMessagesSuppressed() and self:ShouldDisplayMessageType(messageType, message) then
+				local rr, rg, rb = RED_FONT_COLOR:GetRGB()
+				local yr, yg, yb = YELLOW_FONT_COLOR:GetRGB()
+				if r ==  rr and g == rg and b == rb then
+					if VDWSsettings.ErrorFrame.Fonts.ErrorColor == G.OPTIONS_C_DEFAULT then
+						r, g, b = C.Main:GetRGB()
+					elseif VDWSsettings.ErrorFrame.Fonts.ErrorColor == G.OPTIONS_C_CLASS then
+						r, g, b = VDW.PlayerClassColor:GetRGB()
+					elseif VDWSsettings.ErrorFrame.Fonts.ErrorColor == G.OPTIONS_C_FACTION then
+						r, g, b = VDW.PlayerFactionColor:GetRGB()
+					end
+				end
+				if r ==  yr and g == yg and b == yb then
+					if VDWSsettings.ErrorFrame.Fonts.WarningColor == G.OPTIONS_C_DEFAULT then
+						r, g, b = C.Main:GetRGB()
+					elseif VDWSsettings.ErrorFrame.Fonts.WarningColor == G.OPTIONS_C_CLASS then
+						r, g, b = VDW.PlayerClassColor:GetRGB()
+					elseif VDWSsettings.ErrorFrame.Fonts.WarningColor == G.OPTIONS_C_FACTION then
+						r, g, b = VDW.PlayerFactionColor:GetRGB()
+					end
+				end
+				self:AddMessage(message, r, g, b, 1.0, messageType)
+				local errorStringId, soundKitID, voiceID = GetGameMessageInfo(messageType)
+				if voiceID then
+					C_Sound.PlayVocalErrorSound(voiceID)
+				elseif soundKitID then
+					PlaySound(soundKitID)
+				end
 			end
 		end
+		for i = 13, 24, 1 do
+			if VDWSsettings.ErrorFrame.Fonts.Style == "Normal "..i then
+				UIErrorsFrame:SetFontObject(_G["vdw_NFshadowOut_"..i])
+			elseif VDWSsettings.ErrorFrame.Fonts.Style == "Funky "..i then
+				UIErrorsFrame:SetFontObject(_G["vdw_FFshadowOut_"..i])
+			elseif VDWSsettings.ErrorFrame.Fonts.Style == "Groovy "..i then
+				UIErrorsFrame:SetFontObject(_G["vdw_GFshadowOut_"..i])
+			end
+		end
+	else
+		function UIErrorsFrame:TryDisplayMessage(messageType, message, r, g, b)
+			if not self:GetMessagesSuppressed() and self:ShouldDisplayMessageType(messageType, message) then
+				self:AddMessage(message, r, g, b, 1.0, messageType)
+
+				local errorStringId, soundKitID, voiceID = GetGameMessageInfo(messageType)
+				if voiceID then
+					C_Sound.PlayVocalErrorSound(voiceID)
+				elseif soundKitID then
+					PlaySound(soundKitID)
+				end
+			end
+		end
+		UIErrorsFrame:SetFontObject(ErrorFont)
 	end
 end
 -- FPS frame --
 EditModeManagerFrame:HookScript("OnHide", function(self)
 	if VDWSsettings.FPSframe.Visible then
+		FramerateFrame:ClearAllPoints()
+		FramerateFrame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", VDWSsettings.FPSframe.Position.X, VDWSsettings.FPSframe.Position.Y)
+	end
+end)
+EditModeManagerFrame:HookScript("OnShow", function(self)
+	if VDWSsettings.FPSframe.Visible then
+		C_Timer.After(0.5, function() VDW.VDWS.FPScheck() end)
 		FramerateFrame:ClearAllPoints()
 		FramerateFrame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", VDWSsettings.FPSframe.Position.X, VDWSsettings.FPSframe.Position.Y)
 	end
@@ -161,29 +220,23 @@ function VDW.VDWS.FPScheck()
 		if not FramerateFrame:IsShown() then FramerateFrame:Toggle() end
 		FramerateFrame:EnableMouse(true)
 		FramerateFrame:SetClampedToScreen(true)
+		FramerateFrame:SetMovable(true)
+		FramerateFrame:RegisterForDrag("LeftButton")
+		FramerateFrame:SetScript("OnDragStart", FramerateFrame.StartMoving)
+		FramerateFrame:SetScript("OnDragStop", function(self) StopMoving(self) end)
 		FramerateFrame:ClearAllPoints()
 		FramerateFrame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", VDWSsettings.FPSframe.Position.X, VDWSsettings.FPSframe.Position.Y)
 -- fonts --
-		for i = 9, 17, 1 do
+		for i = 9, 18, 1 do
 			if VDWSsettings.FPSframe.Fonts.Style == "Normal "..i then
-				if i == 13 then
-					FramerateFrame.Label:SetFontObject(_G["vdw_NFshadow_"..i])
-					FramerateFrame.FramerateText:SetFontObject(_G["vdw_NFshadow_"..i])
-				else
-					FramerateFrame.Label:SetFontObject(_G["vdws_NFshadow_"..i])
-					FramerateFrame.FramerateText:SetFontObject(_G["vdws_NFshadow_"..i])
-				end
+				FramerateFrame.Label:SetFontObject(_G["vdw_NFshadow_"..i])
+				FramerateFrame.FramerateText:SetFontObject(_G["vdw_NFshadow_"..i])
 			elseif VDWSsettings.FPSframe.Fonts.Style == "Funky "..i then
-				if i == 15 then
-					FramerateFrame.Label:SetFontObject(_G["vdw_FFshadow_"..i])
-					FramerateFrame.FramerateText:SetFontObject(_G["vdw_FFshadow_"..i])
-				else
-					FramerateFrame.Label:SetFontObject(_G["vdws_FFshadow_"..i])
-					FramerateFrame.FramerateText:SetFontObject(_G["vdws_FFshadow_"..i])
-				end
+				FramerateFrame.Label:SetFontObject(_G["vdw_FFshadow_"..i])
+				FramerateFrame.FramerateText:SetFontObject(_G["vdw_FFshadow_"..i])
 			elseif VDWSsettings.FPSframe.Fonts.Style == "Groovy "..i then
-				FramerateFrame.Label:SetFontObject(_G["vdws_GFshadow_"..i])
-				FramerateFrame.FramerateText:SetFontObject(_G["vdws_GFshadow_"..i])
+				FramerateFrame.Label:SetFontObject(_G["vdw_GFshadow_"..i])
+				FramerateFrame.FramerateText:SetFontObject(_G["vdw_GFshadow_"..i])
 			end
 		end
 -- color --
@@ -196,51 +249,6 @@ function VDW.VDWS.FPScheck()
 		elseif VDWSsettings.FPSframe.Fonts.Color == G.OPTIONS_C_FACTION then
 			FramerateFrame.Label:SetTextColor(VDW.PlayerFactionColor:GetRGB())
 			FramerateFrame.FramerateText:SetTextColor(VDW.PlayerFactionColor:GetRGB())
-		end
--- background -- style
-		if VDWSsettings.FPSframe.Background.Style == "None" then
-			vdwsFPS:Hide()
-		elseif VDWSsettings.FPSframe.Background.Style == "Highlight" then
-			vdwsFPS.Background:SetAtlas("GarrMissionLocation-Maw-ButtonHighlight")
-			vdwsFPS:ClearAllPoints()
-			vdwsFPS:SetPoint("TOPLEFT", FramerateFrame, "TOPLEFT", -5, 4)
-			vdwsFPS:SetPoint("BOTTOMRIGHT", FramerateFrame, "BOTTOMRIGHT", 2, -1)
-			vdwsFPS:Show()
-		elseif VDWSsettings.FPSframe.Background.Style == "Kyrian" then
-			vdwsFPS.Background:SetAtlas("CovenantSanctum-Level-Border-Kyrian")
-			vdwsFPS:ClearAllPoints()
-			vdwsFPS:SetPoint("TOPLEFT", FramerateFrame, "TOPLEFT", -10, 20)
-			vdwsFPS:SetPoint("BOTTOMRIGHT", FramerateFrame, "BOTTOMRIGHT", 2, 2)
-			vdwsFPS:Show()
-		elseif VDWSsettings.FPSframe.Background.Style == "Necrolord" then
-			vdwsFPS.Background:SetAtlas("CovenantSanctum-Level-Border-Necrolord")
-			vdwsFPS:ClearAllPoints()
-			vdwsFPS:SetPoint("TOPLEFT", FramerateFrame, "TOPLEFT", -10, 20)
-			vdwsFPS:SetPoint("BOTTOMRIGHT", FramerateFrame, "BOTTOMRIGHT", 2, 2)
-			vdwsFPS:Show()
-		elseif VDWSsettings.FPSframe.Background.Style == "Nightfae" then
-			vdwsFPS.Background:SetAtlas("CovenantSanctum-Level-Border-Nightfae")
-			vdwsFPS:ClearAllPoints()
-			vdwsFPS:SetPoint("TOPLEFT", FramerateFrame, "TOPLEFT", -10, 20)
-			vdwsFPS:SetPoint("BOTTOMRIGHT", FramerateFrame, "BOTTOMRIGHT", 2, 2)
-			vdwsFPS:Show()
-		elseif VDWSsettings.FPSframe.Background.Style == "Venthyr" then
-			vdwsFPS.Background:SetAtlas("CovenantSanctum-Level-Border-Venthyr")
-			vdwsFPS:ClearAllPoints()
-			vdwsFPS:SetPoint("TOPLEFT", FramerateFrame, "TOPLEFT", -10, 20)
-			vdwsFPS:SetPoint("BOTTOMRIGHT", FramerateFrame, "BOTTOMRIGHT", 2, 2)
-			vdwsFPS:Show()
-		end
--- background -- color
-		if VDWSsettings.FPSframe.Background.Color == G.OPTIONS_C_DEFAULT then
-			vdwsFPS.Background:SetDesaturation(0)
-			vdwsFPS.Background:SetVertexColor(1, 1, 1, 1)
-		elseif VDWSsettings.FPSframe.Background.Color == G.OPTIONS_C_CLASS then
-			vdwsFPS.Background:SetDesaturation(1)
-			vdwsFPS.Background:SetVertexColor(VDW.PlayerClassColor:GetRGB())
-		elseif VDWSsettings.FPSframe.Background.Color == G.OPTIONS_C_FACTION then
-			vdwsFPS.Background:SetDesaturation(1)
-			vdwsFPS.Background:SetVertexColor(VDW.PlayerFactionColor:GetRGB())
 		end
 		FramerateFrame:HookScript("OnEnter", function(self)
 -- addon memmory --
@@ -255,6 +263,9 @@ function VDW.VDWS.FPScheck()
 		FramerateFrame:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
 	else
 		if FramerateFrame:IsShown() then FramerateFrame:Toggle() end
+		FramerateFrame:EnableMouse(false)
+		FramerateFrame:SetMovable(false)
+		FramerateFrame:RegisterForDrag("None")
 	end
 end
 -- MMC frame --
@@ -272,6 +283,15 @@ end
 -- Chat frame --
 function VDW.VDWS.ChatFrameChk()
 	if VDWSsettings.Chat.Changed then
+		if VDWSsettings.Chat.Background.Style == G.OPTIONS_C_DEFAULT then
+			for i = 1, 10, 1 do
+				_G["vdwsChat"..i].Background:SetAtlas("Artifacts-BG-Shadow")
+			end
+		elseif VDWSsettings.Chat.Background.Style == "Kladia" then
+			for i = 1, 10, 1 do
+				_G["vdwsChat"..i].Background:SetAtlas("housing-wood-frame")
+			end
+		end
 		for i = 1, 10, 1 do
 		_G["vdwsChat"..i]:ClearAllPoints()
 		_G["vdwsChat"..i]:SetPoint("TOPLEFT", ChatFrame1ButtonFrame, "TOPLEFT", 1, 2)
@@ -294,14 +314,16 @@ end
 function VDW.VDWS.StatusBarTextChk()
 	if VDWSsettings.StatusBarText then
 		C_CVar.SetCVar("xpBarText", "1")
+		MainStatusTrackingBarContainer:ShowText()
+		SecondaryStatusTrackingBarContainer:ShowText()
 	else
 		C_CVar.SetCVar("xpBarText", "0")
 	end
 end
 -- durability --
-local currentTotal = 0
-local maximumTotal = 0
 local function durability()
+	local currentTotal = 0
+	local maximumTotal = 0
 	for i = 1, 30, 1 do
 		local current, maximum = GetInventoryItemDurability(i)
 		if current and maximum then
@@ -319,13 +341,12 @@ local function EventsTime(self, event, arg1, arg2, arg3, arg4)
 		FirstTimeSavedVariables()
 		ProtectOptions()
 		VDW.VDWS.ErrorFrameChk()
-		VDW.VDWS.FPScheck()
 		VDW.VDWS.ChatFrameChk()
 		VDW.VDWS.MMCFrameChk()
 		VDW.VDWS.StatusBarTextChk()
 		VDW.VDWS.MapClock24Chk()
 	elseif event == "PLAYER_ENTERING_WORLD" then
-		VDW.VDWS.FPScheck()
+		C_Timer.After(0.5, function() VDW.VDWS.FPScheck() end)
 	elseif event == "PLAYER_INTERACTION_MANAGER_FRAME_SHOW" then
 		if arg1 == 57 then
 			if FramerateFrame:IsShown() then FramerateFrame:Toggle() end
@@ -334,6 +355,10 @@ local function EventsTime(self, event, arg1, arg2, arg3, arg4)
 		if arg1 == 57 then
 			C_Timer.After(0.5, function() VDW.VDWS.FPScheck() end)
 		end
+	elseif event == "PET_BATTLE_OPENING_DONE" or event == "PET_BATTLE_CLOSE" or event == "STOP_MOVIE" then
+		VDW.VDWS.FPScheck()
+	elseif event == "PLAY_MOVIE" then
+		if FramerateFrame:IsShown() then FramerateFrame:Toggle() end
 	end
 end
 vdwsZlave:SetScript("OnEvent", EventsTime)

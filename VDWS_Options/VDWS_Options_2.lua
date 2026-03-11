@@ -3,13 +3,15 @@ local G = VDW.Local.Override
 local L = VDW.VDWS.Local
 local C = VDW.GetAddonColors("VDWS")
 local prefixTip = VDW.Prefix("VDWS")
-local prefixChat = VDW.PrefixChat("VDWS")
 local NameExist = false
 local maxW = 160
 local finalW = 0
 local counter = 0
-local backgroundStyle = {G.OPTIONS_C_DEFAULT}
-local fontsStyle = {"Normal 11", "Normal 12", "Normal 13", "Normal 14", "Funky 12", "Funky 13", "Funky 14", "Funky 15", "Funky 16", "Funky 17", "Groovy 11", "Groovy 12", "Groovy 13", "Groovy 14",}
+local backgroundStyle = {G.OPTIONS_C_DEFAULT,}
+local fontsStyle = {"Normal",  "Funky", "Groovy",}
+local fontsStyle1 = {"Normal 12", "Normal 13", "Normal 14", "Normal 15", "Normal 16", "Normal 17", "Normal 18"}
+local fontsStyle2 = {"Funky 14", "Funky 15", "Funky 16", "Funky 17", "Funky 18", "Funky 19", "Funky 20",}
+local fontsStyle3 = {"Groovy 14", "Groovy 15", "Groovy 16", "Groovy 17", "Groovy 18", "Groovy 19", "Groovy 20"}
 local color = {G.OPTIONS_C_DEFAULT, G.OPTIONS_C_CLASS, G.OPTIONS_C_FACTION,}
 -- Taking care of the option panel --
 vdwsOptions2:SetSize(576, 498)
@@ -24,19 +26,19 @@ vdwsOptions2.Title:SetTextColor(C.Main:GetRGB())
 vdwsOptions2.Title:SetText(prefixTip.."|nVersion: "..C.High:WrapTextInColorCode(C_AddOns.GetAddOnMetadata("VDWS", "Version")))
 -- Top text of the option panel --
 vdwsOptions2.TopTxt:SetTextColor(C.Main:GetRGB())
-vdwsOptions2.TopTxt:SetText("Looty Groove Options")
+vdwsOptions2.TopTxt:SetText(string.format(L.OPTIONS_FOR, L.LOOTY_GROOVE))
 -- Bottom right text of the option panel --
 vdwsOptions2.BottomRightTxt:SetTextColor(C.Main:GetRGB())
-vdwsOptions2.BottomRightTxt:SetText("May the Good "..C.High:WrapTextInColorCode("Mojo").." be with you!")
+vdwsOptions2.BottomRightTxt:SetText("May the Good "..C.High:WrapTextInColorCode("Mojo").." be with you! ")
 -- taking care of the boxes --
 vdwsOptions2Box1:SetHeight(408)
 vdwsOptions2Box2:SetHeight(136)
 vdwsOptions2Box3:SetHeight(144)
 vdwsOptions2Box4:SetHeight(136)
-vdwsOptions2Box1.Title:SetText(L.W_VISIBILITY)
-vdwsOptions2Box2.Title:SetText("Background")
-vdwsOptions2Box3.Title:SetText("Size")
-vdwsOptions2Box4.Title:SetText("Fonts")
+vdwsOptions2Box1.Title:SetText(L.VISIBILITY)
+vdwsOptions2Box2.Title:SetText(L.BACKGROUND)
+vdwsOptions2Box3.Title:SetText(L.SIZE)
+vdwsOptions2Box4.Title:SetText(L.FONTS)
 vdwsOptions2Box2:ClearAllPoints()
 vdwsOptions2Box2:SetPoint("TOPLEFT", vdwsOptions2Box1, "TOPRIGHT", 0, 0)
 vdwsOptions2Box3:ClearAllPoints()
@@ -84,25 +86,26 @@ local function MouseWheelSlider(self, delta)
 	end
 end
 -- check button show - hide edge artwork --
-vdwsOptions2Box1CheckButton1.Text:SetText("Looty Groove")
-vdwsOptions2Box1CheckButton2.Text:SetText("Title")
+vdwsOptions2Box1CheckButton1.Text:SetText(L.LOOTY_GROOVE)
+vdwsOptions2Box1CheckButton2.Text:SetText(L.TITLE)
 vdwsOptions2Box1CheckButton3.Text:SetText("Sweet Sound of Auction House")
-vdwsOptions2Box1CheckButton4.Text:SetText("Loot")
-vdwsOptions2Box1CheckButton5.Text:SetText("Coins")
-vdwsOptions2Box1CheckButton6.Text:SetText("Currencies")
-vdwsOptions2Box1CheckButton7.Text:SetText("Expirience")
-vdwsOptions2Box1CheckButton8.Text:SetText("Honor")
-vdwsOptions2Box1CheckButton9.Text:SetText("Reputation")
-vdwsOptions2Box1CheckButton10.Text:SetText("Skill")
-vdwsOptions2Box1CheckButton11.Text:SetText("Miscellaneous (Durability, Opening, et cetera)")
+vdwsOptions2Box1CheckButton4.Text:SetText(L.LOOT)
+vdwsOptions2Box1CheckButton5.Text:SetText(L.COINS)
+vdwsOptions2Box1CheckButton6.Text:SetText(L.CURRENCIES)
+vdwsOptions2Box1CheckButton7.Text:SetText(L.EXPIRIENCE)
+vdwsOptions2Box1CheckButton8.Text:SetText(L.HONOR)
+vdwsOptions2Box1CheckButton9.Text:SetText(L.REPUTATION)
+vdwsOptions2Box1CheckButton10.Text:SetText(L.SKILL)
+vdwsOptions2Box1CheckButton11.Text:SetText(L.MISCELLANEOUS)
 for i = 1, 11, 1 do
 	_G["vdwsOptions2Box1CheckButton"..i].Text:SetWidth(vdwsOptions2Box1:GetWidth()*0.8)
 	_G["vdwsOptions2Box1CheckButton"..i]:SetScript("OnEnter", function(self)
-		local word = self.Text:GetText()
+		local word1 = self.Text:GetText()
+		local word2 = C.High:WrapTextInColorCode(L.LOOTY_GROOVE)
 		if i >= 3 then
-			VDW.Tooltip_Show(self, prefixTip, string.format(L.W_CHECKBOX_TIP, word)..C.High:WrapTextInColorCode(" in the Looty Groove"), C.Main)
+			VDW.Tooltip_Show(self, prefixTip, string.format(L.CHECK_VISIBILITY_TIP_IN_THE, word1, word2), C.Main)
 		else
-			VDW.Tooltip_Show(self, prefixTip, string.format(L.W_CHECKBOX_TIP, word), C.Main)
+			VDW.Tooltip_Show(self, prefixTip, string.format(L.CHECK_VISIBILITY_TIP, word1), C.Main)
 		end
 	end)
 	_G["vdwsOptions2Box1CheckButton"..i]:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
@@ -160,12 +163,13 @@ for i = 1, 11, 1 do
 				self.Text:SetTextColor(0.35, 0.35, 0.35, 0.8)
 			end
 			PlaySound(858, "Master")
+			VDW.VDWS.LootyChk()
 		end
 	end)
 end
 -- popout artwork --
 ColoringPopOutButtons(2, 1)
-vdwsOptions2Box2PopOut1.Title:SetText(L.W_STYLE)
+vdwsOptions2Box2PopOut1.Title:SetText(L.STYLE)
 for i, name in ipairs(backgroundStyle) do
 	counter = counter + 1
 	local btn = CreateFrame("Button", "vdwsOptions2Box2PopOut1Choice"..i, nil, "vdwPopOutButton")
@@ -207,7 +211,7 @@ maxW = 160
 vdwsOptions2Box2PopOut1:HookScript("OnEnter", function(self)
 	local parent = self:GetParent()
 	local word = parent.Title:GetText()
-	VDW.Tooltip_Show(self, prefixTip, string.format(L.W_S_TIP, word), C.Main)
+	VDW.Tooltip_Show(self, prefixTip, string.format(L.STYLE_TIP, word), C.Main)
 end)
 vdwsOptions2Box2PopOut1:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
 vdwsOptions2Box2PopOut1:HookScript("OnClick", function(self, button, down)
@@ -221,7 +225,7 @@ vdwsOptions2Box2PopOut1:HookScript("OnClick", function(self, button, down)
 end)
 -- popout color --
 ColoringPopOutButtons(2, 2)
-vdwsOptions2Box2PopOut2.Title:SetText(L.W_COLOR)
+vdwsOptions2Box2PopOut2.Title:SetText(L.COLOR)
 for i, name in ipairs(color) do
 	counter = counter + 1
 	local btn = CreateFrame("Button", "vdwsOptions2Box2PopOut2Choice"..i, nil, "vdwPopOutButton")
@@ -263,7 +267,7 @@ maxW = 160
 vdwsOptions2Box2PopOut2:HookScript("OnEnter", function(self)
 	local parent = self:GetParent()
 	local word = parent.Title:GetText()
-	VDW.Tooltip_Show(self, prefixTip, string.format(L.W_C_TIP, word), C.Main)
+	VDW.Tooltip_Show(self, prefixTip, string.format(L.COLOR_TIP, word), C.Main)
 end)
 vdwsOptions2Box2PopOut2:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
 vdwsOptions2Box2PopOut2:HookScript("OnClick", function(self, button, down)
@@ -283,12 +287,12 @@ vdwsOptions2Box2Slider1.Forward:GetRegions():SetVertexColor(C.Main:GetRGB())
 vdwsOptions2Box2Slider1.TopText:SetTextColor(C.High:GetRGB())
 vdwsOptions2Box2Slider1.MinText:SetTextColor(C.High:GetRGB())
 vdwsOptions2Box2Slider1.MaxText:SetTextColor(C.High:GetRGB())
-vdwsOptions2Box2Slider1.MinText:SetText(0)
-vdwsOptions2Box2Slider1.MaxText:SetText(1)
+vdwsOptions2Box2Slider1.MinText:SetText("0%")
+vdwsOptions2Box2Slider1.MaxText:SetText("100%")
 vdwsOptions2Box2Slider1.Slider:SetMinMaxValues(0, 100)
 -- enter --
 vdwsOptions2Box2Slider1.Slider:HookScript("OnEnter", function(self)
-	VDW.Tooltip_Show(self, prefixTip, L.W_SLIDER_TIP, C.Main)
+	VDW.Tooltip_Show(self, prefixTip, L.SLIDER_TIP, C.Main)
 end)
 -- leave --
 vdwsOptions2Box2Slider1.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
@@ -296,7 +300,7 @@ vdwsOptions2Box2Slider1.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_
 vdwsOptions2Box2Slider1.Slider:SetScript("OnMouseWheel", MouseWheelSlider)
 -- value change --
 vdwsOptions2Box2Slider1.Slider:SetScript("OnValueChanged", function (self, value, userInput)
-	vdwsOptions2Box2Slider1.TopText:SetText("Opacity: "..self:GetValue()/100)
+	vdwsOptions2Box2Slider1.TopText:SetText(string.format(L.SLIDER_TEXT_OPACITY, self:GetValue()).."%")
 	VDWSsettings.Looty.Background.Alpha = self:GetValue()/100
 	vdwsLooty.BGtexture1:SetAlpha(VDWSsettings.Looty.Background.Alpha)
 	vdwsLooty.BGtexture2:SetAlpha(VDWSsettings.Looty.Background.Alpha*0.75)
@@ -316,7 +320,7 @@ vdwsOptions2Box3Slider1.MaxText:SetText(640)
 vdwsOptions2Box3Slider1.Slider:SetMinMaxValues(240, 640)
 -- enter --
 vdwsOptions2Box3Slider1.Slider:HookScript("OnEnter", function(self)
-	VDW.Tooltip_Show(self, prefixTip, L.W_SLIDER_TIP, C.Main)
+	VDW.Tooltip_Show(self, prefixTip, L.SLIDER_TIP, C.Main)
 end)
 -- leave --
 vdwsOptions2Box3Slider1.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
@@ -324,7 +328,7 @@ vdwsOptions2Box3Slider1.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_
 vdwsOptions2Box3Slider1.Slider:SetScript("OnMouseWheel", MouseWheelSlider)
 -- value change --
 vdwsOptions2Box3Slider1.Slider:SetScript("OnValueChanged", function (self, value, userInput)
-	vdwsOptions2Box3Slider1.TopText:SetText("Width: "..self:GetValue())
+	vdwsOptions2Box3Slider1.TopText:SetText(string.format(L.SLIDER_TEXT_WIDTH, self:GetValue()))
 	VDWSsettings.Looty.Size.W = self:GetValue()
 	vdwsLooty:SetWidth(VDWSsettings.Looty.Size.W)
 	PlaySound(858, "Master")
@@ -342,7 +346,7 @@ vdwsOptions2Box3Slider2.MaxText:SetText(640)
 vdwsOptions2Box3Slider2.Slider:SetMinMaxValues(80, 640)
 -- enter --
 vdwsOptions2Box3Slider2.Slider:HookScript("OnEnter", function(self)
-	VDW.Tooltip_Show(self, prefixTip, L.W_SLIDER_TIP, C.Main)
+	VDW.Tooltip_Show(self, prefixTip, L.SLIDER_TIP, C.Main)
 end)
 -- leave --
 vdwsOptions2Box3Slider2.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
@@ -350,14 +354,14 @@ vdwsOptions2Box3Slider2.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_
 vdwsOptions2Box3Slider2.Slider:SetScript("OnMouseWheel", MouseWheelSlider)
 -- value change --
 vdwsOptions2Box3Slider2.Slider:SetScript("OnValueChanged", function (self, value, userInput)
-	vdwsOptions2Box3Slider2.TopText:SetText("Height: "..self:GetValue())
+	vdwsOptions2Box3Slider2.TopText:SetText(string.format(L.SLIDER_TEXT_HEIGHT, self:GetValue()))
 	VDWSsettings.Looty.Size.H = self:GetValue()
 	vdwsLooty:SetHeight(VDWSsettings.Looty.Size.H)
 	PlaySound(858, "Master")
 end)
--- popout artwork --
+-- popout general style
 ColoringPopOutButtons(4, 1)
-vdwsOptions2Box4PopOut1.Title:SetText(L.W_STYLE)
+vdwsOptions2Box4PopOut1.Title:SetText(L.STYLE)
 for i, name in ipairs(fontsStyle) do
 	counter = counter + 1
 	local btn = CreateFrame("Button", "vdwsOptions2Box4PopOut1Choice"..i, nil, "vdwPopOutButton")
@@ -381,10 +385,25 @@ for i, name in ipairs(fontsStyle) do
 	_G["vdwsOptions2Box4PopOut1Choice"..i].Text:SetText(name)
 	_G["vdwsOptions2Box4PopOut1Choice"..i]:HookScript("OnClick", function(self, button, down)
 		if button == "LeftButton" and down == false then
-			VDWSsettings.Looty.Fonts.Style = self.Text:GetText()
+			if self.Text:GetText() == "Normal" then
+				vdwsOptions2Box4PopOut2:Show()
+				vdwsOptions2Box4PopOut2.Text:SetText("")
+				vdwsOptions2Box4PopOut3:Hide()
+				vdwsOptions2Box4PopOut4:Hide()
+			elseif self.Text:GetText() == "Funky" then
+				vdwsOptions2Box4PopOut2:Hide()
+				vdwsOptions2Box4PopOut3:Show()
+				vdwsOptions2Box4PopOut3.Text:SetText("")
+				vdwsOptions2Box4PopOut4:Hide()
+			elseif self.Text:GetText() == "Groovy" then
+				vdwsOptions2Box4PopOut2:Hide()
+				vdwsOptions2Box4PopOut3:Hide()
+				vdwsOptions2Box4PopOut4:Show()
+				vdwsOptions2Box4PopOut4.Text:SetText("")
+			end
+			VDWSsettings.Looty.Fonts.Color = self.Text:GetText()
 			vdwsOptions2Box4PopOut1.Text:SetText(self.Text:GetText())
 			vdwsOptions2Box4PopOut1Choice1:Hide()
-			VDW.VDWS.LootyChk()
 		end
 	end)
 	local w = _G["vdwsOptions2Box4PopOut1Choice"..i].Text:GetStringWidth()
@@ -399,7 +418,7 @@ maxW = 160
 vdwsOptions2Box4PopOut1:HookScript("OnEnter", function(self)
 	local parent = self:GetParent()
 	local word = parent.Title:GetText()
-	VDW.Tooltip_Show(self, prefixTip, string.format(L.W_S_TIP, word), C.Main)
+	VDW.Tooltip_Show(self, prefixTip, string.format(L.STYLE_TIP, word), C.Main)
 end)
 vdwsOptions2Box4PopOut1:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
 vdwsOptions2Box4PopOut1:HookScript("OnClick", function(self, button, down)
@@ -411,10 +430,10 @@ vdwsOptions2Box4PopOut1:HookScript("OnClick", function(self, button, down)
 		end
 	end
 end)
--- popout color --
+-- popout style normal
 ColoringPopOutButtons(4, 2)
-vdwsOptions2Box4PopOut2.Title:SetText(L.W_COLOR)
-for i, name in ipairs(color) do
+vdwsOptions2Box4PopOut2.Title:SetText(L.SIZE)
+for i, name in ipairs(fontsStyle1) do
 	counter = counter + 1
 	local btn = CreateFrame("Button", "vdwsOptions2Box4PopOut2Choice"..i, nil, "vdwPopOutButton")
 	_G["vdwsOptions2Box4PopOut2Choice"..i]:ClearAllPoints()
@@ -437,7 +456,7 @@ for i, name in ipairs(color) do
 	_G["vdwsOptions2Box4PopOut2Choice"..i].Text:SetText(name)
 	_G["vdwsOptions2Box4PopOut2Choice"..i]:HookScript("OnClick", function(self, button, down)
 		if button == "LeftButton" and down == false then
-			VDWSsettings.Looty.Fonts.Color = self.Text:GetText()
+			VDWSsettings.Looty.Fonts.Style = self.Text:GetText()
 			vdwsOptions2Box4PopOut2.Text:SetText(self.Text:GetText())
 			vdwsOptions2Box4PopOut2Choice1:Hide()
 			VDW.VDWS.LootyChk()
@@ -455,7 +474,7 @@ maxW = 160
 vdwsOptions2Box4PopOut2:HookScript("OnEnter", function(self)
 	local parent = self:GetParent()
 	local word = parent.Title:GetText()
-	VDW.Tooltip_Show(self, prefixTip, string.format(L.W_C_TIP, word), C.Main)
+	VDW.Tooltip_Show(self, prefixTip, string.format(L.SIZE_TIP, word), C.Main)
 end)
 vdwsOptions2Box4PopOut2:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
 vdwsOptions2Box4PopOut2:HookScript("OnClick", function(self, button, down)
@@ -464,6 +483,118 @@ vdwsOptions2Box4PopOut2:HookScript("OnClick", function(self, button, down)
 			vdwsOptions2Box4PopOut2Choice1:Show()
 		else
 			vdwsOptions2Box4PopOut2Choice1:Hide()
+		end
+	end
+end)
+-- popout style funky
+ColoringPopOutButtons(4, 3)
+vdwsOptions2Box4PopOut3.Title:SetText(L.SIZE)
+for i, name in ipairs(fontsStyle2) do
+	counter = counter + 1
+	local btn = CreateFrame("Button", "vdwsOptions2Box4PopOut3Choice"..i, nil, "vdwPopOutButton")
+	_G["vdwsOptions2Box4PopOut3Choice"..i]:ClearAllPoints()
+	if i == 1 then
+		_G["vdwsOptions2Box4PopOut3Choice"..i]:SetParent(vdwsOptions2Box4PopOut3)
+		_G["vdwsOptions2Box4PopOut3Choice"..i]:SetPoint("TOP", vdwsOptions2Box4PopOut3, "BOTTOM", 0, 4)
+		_G["vdwsOptions2Box4PopOut3Choice"..i]:SetScript("OnShow", function(self)
+			self:GetParent():SetNormalAtlas("charactercreate-customize-dropdownbox-hover")
+			PlaySound(855, "Master")
+		end)
+		_G["vdwsOptions2Box4PopOut3Choice"..i]:SetScript("OnHide", function(self)
+			self:GetParent():SetNormalAtlas("charactercreate-customize-dropdownbox-open")
+			PlaySound(855, "Master")
+		end)
+	else
+		_G["vdwsOptions2Box4PopOut3Choice"..i]:SetParent(vdwsOptions2Box4PopOut3Choice1)
+		_G["vdwsOptions2Box4PopOut3Choice"..i]:SetPoint("TOP", _G["vdwsOptions2Box4PopOut3Choice"..i-1], "BOTTOM", 0, 0)
+		_G["vdwsOptions2Box4PopOut3Choice"..i]:Show()
+	end
+	_G["vdwsOptions2Box4PopOut3Choice"..i].Text:SetText(name)
+	_G["vdwsOptions2Box4PopOut3Choice"..i]:HookScript("OnClick", function(self, button, down)
+		if button == "LeftButton" and down == false then
+			VDWSsettings.Looty.Fonts.Style = self.Text:GetText()
+			vdwsOptions2Box4PopOut3.Text:SetText(self.Text:GetText())
+			vdwsOptions2Box4PopOut3Choice1:Hide()
+			VDW.VDWS.LootyChk()
+		end
+	end)
+	local w = _G["vdwsOptions2Box4PopOut3Choice"..i].Text:GetStringWidth()
+	if w > maxW then maxW = w end
+end
+finalW = math.ceil(maxW + 24)
+for i = 1, counter, 1 do
+	_G["vdwsOptions2Box4PopOut3Choice"..i]:SetWidth(finalW)
+end
+counter = 0
+maxW = 160
+vdwsOptions2Box4PopOut3:HookScript("OnEnter", function(self)
+	local parent = self:GetParent()
+	local word = parent.Title:GetText()
+	VDW.Tooltip_Show(self, prefixTip, string.format(L.SIZE_TIP, word), C.Main)
+end)
+vdwsOptions2Box4PopOut3:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
+vdwsOptions2Box4PopOut3:HookScript("OnClick", function(self, button, down)
+	if button == "LeftButton" and down == false then
+		if not vdwsOptions2Box4PopOut3Choice1:IsShown() then
+			vdwsOptions2Box4PopOut3Choice1:Show()
+		else
+			vdwsOptions2Box4PopOut3Choice1:Hide()
+		end
+	end
+end)
+-- popout style groovy
+ColoringPopOutButtons(4, 4)
+vdwsOptions2Box4PopOut4.Title:SetText(L.SIZE)
+for i, name in ipairs(fontsStyle3) do
+	counter = counter + 1
+	local btn = CreateFrame("Button", "vdwsOptions2Box4PopOut4Choice"..i, nil, "vdwPopOutButton")
+	_G["vdwsOptions2Box4PopOut4Choice"..i]:ClearAllPoints()
+	if i == 1 then
+		_G["vdwsOptions2Box4PopOut4Choice"..i]:SetParent(vdwsOptions2Box4PopOut4)
+		_G["vdwsOptions2Box4PopOut4Choice"..i]:SetPoint("TOP", vdwsOptions2Box4PopOut4, "BOTTOM", 0, 4)
+		_G["vdwsOptions2Box4PopOut4Choice"..i]:SetScript("OnShow", function(self)
+			self:GetParent():SetNormalAtlas("charactercreate-customize-dropdownbox-hover")
+			PlaySound(855, "Master")
+		end)
+		_G["vdwsOptions2Box4PopOut4Choice"..i]:SetScript("OnHide", function(self)
+			self:GetParent():SetNormalAtlas("charactercreate-customize-dropdownbox-open")
+			PlaySound(855, "Master")
+		end)
+	else
+		_G["vdwsOptions2Box4PopOut4Choice"..i]:SetParent(vdwsOptions2Box4PopOut4Choice1)
+		_G["vdwsOptions2Box4PopOut4Choice"..i]:SetPoint("TOP", _G["vdwsOptions2Box4PopOut4Choice"..i-1], "BOTTOM", 0, 0)
+		_G["vdwsOptions2Box4PopOut4Choice"..i]:Show()
+	end
+	_G["vdwsOptions2Box4PopOut4Choice"..i].Text:SetText(name)
+	_G["vdwsOptions2Box4PopOut4Choice"..i]:HookScript("OnClick", function(self, button, down)
+		if button == "LeftButton" and down == false then
+			VDWSsettings.Looty.Fonts.Style = self.Text:GetText()
+			vdwsOptions2Box4PopOut4.Text:SetText(self.Text:GetText())
+			vdwsOptions2Box4PopOut4Choice1:Hide()
+			VDW.VDWS.LootyChk()
+		end
+	end)
+	local w = _G["vdwsOptions2Box4PopOut4Choice"..i].Text:GetStringWidth()
+	if w > maxW then maxW = w end
+end
+finalW = math.ceil(maxW + 24)
+for i = 1, counter, 1 do
+	_G["vdwsOptions2Box4PopOut4Choice"..i]:SetWidth(finalW)
+end
+counter = 0
+maxW = 160
+vdwsOptions2Box4PopOut4:HookScript("OnEnter", function(self)
+	local parent = self:GetParent()
+	local word = parent.Title:GetText()
+	VDW.Tooltip_Show(self, prefixTip, string.format(L.SIZE_TIP, word), C.Main)
+end)
+vdwsOptions2Box4PopOut4:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
+vdwsOptions2Box4PopOut4:HookScript("OnClick", function(self, button, down)
+	if button == "LeftButton" and down == false then
+		if not vdwsOptions2Box4PopOut4Choice1:IsShown() then
+			vdwsOptions2Box4PopOut4Choice1:Show()
+		else
+			vdwsOptions2Box4PopOut4Choice1:Hide()
 		end
 	end
 end)
@@ -480,7 +611,7 @@ vdwsOptions2Box4Slider1.MaxText:SetText(180)
 vdwsOptions2Box4Slider1.Slider:SetMinMaxValues(10, 180)
 -- enter --
 vdwsOptions2Box4Slider1.Slider:HookScript("OnEnter", function(self)
-	VDW.Tooltip_Show(self, prefixTip, L.W_SLIDER_TIP, C.Main)
+	VDW.Tooltip_Show(self, prefixTip, L.SLIDER_TIP, C.Main)
 end)
 -- leave --
 vdwsOptions2Box4Slider1.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_Hide() end)
@@ -488,7 +619,7 @@ vdwsOptions2Box4Slider1.Slider:HookScript("OnLeave", function(self) VDW.Tooltip_
 vdwsOptions2Box4Slider1.Slider:SetScript("OnMouseWheel", MouseWheelSlider)
 -- value change --
 vdwsOptions2Box4Slider1.Slider:SetScript("OnValueChanged", function (self, value, userInput)
-	vdwsOptions2Box4Slider1.TopText:SetText("Text visible: "..self:GetValue().." sec")
+	vdwsOptions2Box4Slider1.TopText:SetText(string.format(L.SLIDER_TEXT_VISIBILITY, self:GetValue()))
 	VDWSsettings.Looty.Duration = self:GetValue()
 	vdwsLooty:SetTimeVisible(VDWSsettings.Looty.Duration)
 	PlaySound(858, "Master")
@@ -577,8 +708,23 @@ local function CheckSavedVariables()
 	vdwsOptions2Box2Slider1.Slider:SetValue(VDWSsettings.Looty.Background.Alpha*100)
 	vdwsOptions2Box3Slider1.Slider:SetValue(VDWSsettings.Looty.Size.W)
 	vdwsOptions2Box3Slider2.Slider:SetValue(VDWSsettings.Looty.Size.H)
-	vdwsOptions2Box4PopOut1.Text:SetText(VDWSsettings.Looty.Fonts.Style)
-	vdwsOptions2Box4PopOut2.Text:SetText(VDWSsettings.Looty.Fonts.Color)
+	vdwsOptions2Box4PopOut1.Text:SetText(VDWSsettings.Looty.Fonts.Color)
+	vdwsOptions2Box4PopOut2.Text:SetText(VDWSsettings.Looty.Fonts.Style)
+	vdwsOptions2Box4PopOut3.Text:SetText(VDWSsettings.Looty.Fonts.Style)
+	vdwsOptions2Box4PopOut4.Text:SetText(VDWSsettings.Looty.Fonts.Style)
+	if VDWSsettings.Looty.Fonts.Color == "Normal" then
+		vdwsOptions2Box4PopOut2:Show()
+		vdwsOptions2Box4PopOut3:Hide()
+		vdwsOptions2Box4PopOut4:Hide()
+	elseif VDWSsettings.Looty.Fonts.Color == "Funky" then
+		vdwsOptions2Box4PopOut2:Hide()
+		vdwsOptions2Box4PopOut3:Show()
+		vdwsOptions2Box4PopOut4:Hide()
+	elseif VDWSsettings.Looty.Fonts.Color == "Groovy" then
+		vdwsOptions2Box4PopOut2:Hide()
+		vdwsOptions2Box4PopOut3:Hide()
+		vdwsOptions2Box4PopOut4:Show()
+	end
 	vdwsOptions2Box4Slider1.Slider:SetValue(VDWSsettings.Looty.Duration)
 end
 -- Show the option panel --
