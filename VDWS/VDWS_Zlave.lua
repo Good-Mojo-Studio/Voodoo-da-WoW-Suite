@@ -209,9 +209,18 @@ EditModeManagerFrame:HookScript("OnHide", function(self)
 end)
 EditModeManagerFrame:HookScript("OnShow", function(self)
 	if VDWSsettings.FPSframe.Visible then
-		C_Timer.After(0.5, function() VDW.VDWS.FPScheck() end)
-		FramerateFrame:ClearAllPoints()
-		FramerateFrame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", VDWSsettings.FPSframe.Position.X, VDWSsettings.FPSframe.Position.Y)
+		C_Timer.After(0.1, function()
+			FramerateFrame:ClearAllPoints()
+			FramerateFrame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", VDWSsettings.FPSframe.Position.X, VDWSsettings.FPSframe.Position.Y)
+		end)
+	end
+end)
+QueueStatusButtonIcon:HookScript("OnShow", function(self)
+	if VDWSsettings.FPSframe.Visible then
+		C_Timer.After(0.1, function()
+			FramerateFrame:ClearAllPoints()
+			FramerateFrame:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", VDWSsettings.FPSframe.Position.X, VDWSsettings.FPSframe.Position.Y)
+		end)
 	end
 end)
 -- check FPS --
@@ -355,7 +364,7 @@ local function EventsTime(self, event, arg1, arg2, arg3, arg4)
 		if arg1 == 57 then
 			C_Timer.After(0.5, function() VDW.VDWS.FPScheck() end)
 		end
-	elseif event == "PET_BATTLE_OPENING_DONE" or event == "PET_BATTLE_CLOSE" or event == "STOP_MOVIE" then
+	elseif event == "PET_BATTLE_OPENING_DONE" or event == "PET_BATTLE_CLOSE" or event == "STOP_MOVIE" or event == "PLAYER_SPECIALIZATION_CHANGED" or event == "PLAYER_LEVEL_UP" then
 		VDW.VDWS.FPScheck()
 	elseif event == "PLAY_MOVIE" then
 		if FramerateFrame:IsShown() then FramerateFrame:Toggle() end

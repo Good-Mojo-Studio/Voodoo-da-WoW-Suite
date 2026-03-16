@@ -13,6 +13,8 @@
 				self:RegisterEvent("SYSMSG")
 				self:RegisterEvent("UI_INFO_MESSAGE")
 				self:RegisterEvent("UI_ERROR_MESSAGE")
+				self:RegisterEvent("PLAYER_SPECIALIZATION_CHANGED")
+				self:RegisterEvent("PLAYER_LEVEL_UP")
 			</OnLoad>
 		</Scripts>
 	</Frame>

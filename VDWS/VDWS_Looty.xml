@@ -42,7 +42,7 @@
 				self:RegisterEvent("CHAT_MSG_OPENING")
 				self:SetJustifyH("LEFT")
 				self:SetInsertMode(2)
-				self:SetTextCopyable(true)
+				--self:SetTextCopyable(true)
 			</OnLoad>
 		</Scripts>
 		<Frames>
