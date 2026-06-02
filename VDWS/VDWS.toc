@@ -1,8 +1,8 @@
 ## Interface: 120005
-## IconAtlas: Relic-Arcane-TraitBG
-## Title: Voodoo |cFF974CE7da|r Wow |cFF974CE7Suite|r
-## Notes: One |cFF974CE7voodoo|r to bind them |cFF974CE7all|r!
-## Version: 1.01.04
+## IconAtlas: Relic-Water-TraitBG
+## Title: Voodoo |cFF3B9CCDda|r Wow |cFF3B9CCDSuite|r
+## Notes: |cFF94D1BDOne |cFF3B9CCDvoodoo|r to bind them |cFF3B9CCDall|r|r!
+## Version: 1.01.05
 ## Category: UI Overhaul
 ## Category-deDE: UI-Überholung
 ## Category-esES: Renovación de la Interfaz de Usuario
